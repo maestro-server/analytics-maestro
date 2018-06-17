@@ -16,9 +16,7 @@ class DateTimeEncoder(json.JSONEncoder):
             try:
                 val = obj.decode('utf-8')
             except Exception as err:
-                logger.error("==================================> Decode is not utf-8")
-                return
-
+                return logger.error("==================================> Decode is not utf-8")
 
         if val is None:
             val = json.JSONEncoder.default(self, obj)
