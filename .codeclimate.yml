@@ -1,0 +1,24 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - python:
+        - python_version: 3
+        - mass_threshold: 32
+  fixme:
+    enabled: true
+  pep8:
+    enabled: true
+ratings:
+  paths:
+  - "**.py"
+exclude_paths:
+- devtools/
+- app/tests/
+- lib/
+- docs/
+- bin/
+- node_modules/
+- include/

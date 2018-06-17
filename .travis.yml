@@ -1,0 +1,36 @@
+language: python
+python:
+  - "3.6"
+install:
+  - pip install -r requirements.txt
+jobs:
+  include:
+    - stage: unit test
+      script:
+      - python -m unittest discover -s app/tests
+
+    - stage: coverage
+      script:
+        - pip install codeclimate-test-reporter coverage==4.3 python-coveralls
+        - coverage run --source=app -m unittest discover -s app/tests/
+      after_success:
+        - codeclimate-test-reporter
+        - coveralls
+
+    - stage: build docker image - flask (base)
+      if: branch != master
+      script:
+        - docker build -f Dockerfile -t $REPO_FLASK .
+      after_success:
+        - docker login -u $DOCKER_USER -p $DOCKER_PASS
+        - docker tag $REPO_FLASK $DOCKER_USER/$REPO_FLASK:$TRAVIS_BRANCH
+        - docker push $DOCKER_USER/$REPO_FLASK:$TRAVIS_BRANCH
+
+    - stage: build docker image - flask (latest)
+      if: branch = master
+      script:
+        - docker build -f Dockerfile -t $REPO_FLASK .
+      after_success:
+        - docker login -u $DOCKER_USER -p $DOCKER_PASS
+        - docker tag $REPO_FLASK $DOCKER_USER/$REPO_FLASK:latest
+        - docker push $DOCKER_USER/$REPO_FLASK:latest
