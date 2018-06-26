@@ -12,6 +12,7 @@ from .controller import *
 api = Api(app)
 
 api.add_resource(HomeApp, '/')
+api.add_resource(GraphBussinessApp, '/graph/bussiness')
 
 @app.errorhandler(404)
 def error(e):

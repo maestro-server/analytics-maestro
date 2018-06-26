@@ -10,5 +10,5 @@ load_dotenv(find_dotenv())
 # ----------------------------------------
 
 if __name__ == "__main__":
-    port = int(os.environ.get("MAESTRO_PORT", 5010))
+    port = int(os.environ.get("MAESTRO_PORT", 5020))
     app.run(port=port)
