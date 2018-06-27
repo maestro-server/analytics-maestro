@@ -19,8 +19,7 @@ class GraphBussinessApp(Resource):
             owner_id=valid['owner_user']
 
             try:
-                filters=json.loads(valid['filters'])
-                entry_id = task_entry(filters=filters, owner_id=owner_id) 
+                entry_id = task_entry(filters=valid['filters'], owner_id=owner_id) 
             except Exception as error:
                 task_notification(owner_id=owner_id, msg=str(error), status='error')
                 return {'message': str(error)}, 501

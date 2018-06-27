@@ -8,8 +8,8 @@ from app.libs.notifyError import notify_error
 from app.services.root import Root
 
 
-@celery.task(name="entry.api", bind=True)
-def task_entry(self, owner_id, filters=''):
+@celery.task(name="draw.infra", bind=True)
+def task_draw_infra(self, owner_id, filters=''):
     path = FactoryDataURL.make(path="systems")
     context = requests.post(path, json={'query': filters})
 
