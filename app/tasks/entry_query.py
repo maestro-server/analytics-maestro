@@ -3,7 +3,8 @@ import json
 import os
 from app import celery
 from app.tasks.notification import task_notification
-import app.libs.statusCode
+from app.libs.statusCode import check_status
+from app.libs.notifyError import notify_error
 
 
 @celery.task(name="entry.api", bind=True)
