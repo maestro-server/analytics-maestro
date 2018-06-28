@@ -1,11 +1,16 @@
 
 from .crawler import Crawler
+from app.error.clientMaestroError import ClientMaestroError
 
 
 class Root(object):
 
-    def __init__(self, data, crawler=Crawler):
+    def __init__(self, data, owner_id, crawler=Crawler):
+        if not isinstance(data, (list, tuple)) or len(data) <= 0:
+            raise ClientMaestroError("Dont exist any system (empty list)")
+
         self.__data = data
+        self.__owner_id = owner_id
         self.__bag_fallen = []
         self.__bag_apps = []
 
@@ -17,7 +22,6 @@ class Root(object):
     def validate_roots(self):
         for system in self.__data:
             entry = system.get('entry')
-
             if isinstance(entry, (list, tuple)) and len(entry) > 0:
                 ids = list(map(lambda x: x.get('_id'), entry))
                 self.push_bag(ids)
@@ -27,8 +31,8 @@ class Root(object):
 
         return self
     
-    def fill_gaps_root(self):
-        entries = self.crawler(self.__bag_fallen)\
+    def fill_gaps_root(self, requester):
+        entries = self.crawler(self.__bag_fallen, requester)\
                         .find_apps()\
                         .propagate_entries()\
                         .get_entries()

@@ -1,9 +1,8 @@
+import os
 import requests
+from app.views import app
 from app import celery
-from app.libs.logger import logger
-from app.libs.url import FactoryDataURL
-from app.libs.statusCode import check_status
-
+from app.repository.externalMaestro import ExternalMaestro
 
 @celery.task(name="notification.api")
 def task_notification(owner_id, msg, status='success', more={}):
@@ -12,10 +11,8 @@ def task_notification(owner_id, msg, status='success', more={}):
     data = {'roles': [role], 'status': status, 'msg': msg, 'context': 'analytics', 'active': True}
     merged = {**data, **more}
 
-    path = FactoryDataURL.make(path="events")
-    context = requests.put(path, json={'body': [merged]})
+    base = app.config['MAESTRO_DATA_URI']
+    status = ExternalMaestro(base)\
+                            .put_request(path="events", json={'body': [merged]})
 
-    if check_status(context):
-        logger.error("Reports: TASK [notification] - %s", context.text)
-
-    return {'owner_id': owner_id, 'status': context.status_code}
+    return {'owner_id': owner_id, 'status': status}

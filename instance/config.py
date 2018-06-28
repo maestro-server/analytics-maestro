@@ -14,6 +14,7 @@ load_dotenv(find_dotenv())
 class Config(object):
     TESTING = os.environ.get("TESTING", False)
     RESTFUL_JSON = {'cls': DateTimeEncoder}
+    MAESTRO_DATA_URI = os.environ.get("MAESTRO_DATA_URI", "http://localhost:5010")
 
 class ProductionConfig(Config):
     pass

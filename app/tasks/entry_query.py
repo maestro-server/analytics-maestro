@@ -1,25 +1,16 @@
-import requests
-from app import celery
-from app.libs.url import FactoryDataURL
-from app.tasks.notification import task_notification
-from app.libs.statusCode import check_status
-from app.libs.notifyError import notify_error
 
+from app import celery
 from app.services.root import Root
+from app.repository.externalMaestroData import ExternalMaestroData
 
 
 @celery.task(name="entry.api", bind=True)
 def task_entry(self, owner_id, filters=''):
-    path = FactoryDataURL.make(path="systems")
-    context = requests.post(path, json={'query': filters})
 
-    if context.status_code is 200:
-        result = context.json()
-        if 'found' in result and result['found'] > 0:
-            return Root(result['items'])\
-                                .validate_roots()\
-                                .fill_gaps_root()\
-                                .get_roots_id()
+    ExternalRequest = ExternalMaestroData(owner_id=owner_id)
+    items = ExternalRequest.get_request(path="systems", json={'query': filters})
 
-    if check_status(context):
-        return notify_error(task='entry', owner_id=owner_id, msg=context.text)
+    return Root(items, owner_id)\
+                .validate_roots()\
+                .fill_gaps_root(ExternalRequest)\
+                .get_roots_id()
