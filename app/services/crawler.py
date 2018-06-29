@@ -1,12 +1,14 @@
 
 import json
+from app.services.guestEntry import GuestEntry
 
 class Crawler(object):
 
-    def __init__(self, ids, requester):
+    def __init__(self, ids, requester, guest=GuestEntry):
         self.__bag_systems = ids
         self.__bag_ids = []
 
+        self.__guest = guest
         self._requester = requester
 
     def find_apps(self):
@@ -16,8 +18,8 @@ class Crawler(object):
   
         filters = json.dumps(systems)
         items = self._requester.get_request(path="applications", json={'query': filters})
-        
-        print(items)
+        self.__bag_ids = self.__guest(items).get_entries()
+
         return self
 
     def propagate_entries(self):
