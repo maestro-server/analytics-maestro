@@ -107,6 +107,7 @@ include/
 /tcl
 pip-selfcheck.json
 share/
+etc/
 
 .vs/
 *.pyproj
