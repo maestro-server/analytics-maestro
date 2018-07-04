@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM maestroserver/maestro-pandas
 MAINTAINER Felipe Signorini <felipe.signorini@maestroserver.io>
 
 COPY docker-entrypoint.sh /usr/local/bin/

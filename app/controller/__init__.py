@@ -1,2 +1,2 @@
 from .home import HomeApp
-from .graphBussiness import GraphBussinessApp
+from .graph import GraphApp

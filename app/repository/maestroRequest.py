@@ -15,8 +15,7 @@ class MaestroRequest(object):
         if self.__context.status_code is 200:
             result = self.__context.json()
 
-            if 'found' in result and result['found'] > 0:
-                return result.get('items')
+            return result.get('items')
 
         raise ClientMaestroError(self.__context.text)
     

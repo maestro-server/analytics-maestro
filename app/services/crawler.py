@@ -18,11 +18,10 @@ class Crawler(object):
   
         filters = json.dumps(systems)
         items = self._requester.get_request(path="applications", json={'query': filters})
-        self.__bag_ids = self.__guest(items).get_entries()
 
-        return self
+        if isinstance(items, (list, tuple)) and len(items) > 0:
+            self.__bag_ids = self.__guest(items).get_entries()
 
-    def propagate_entries(self):
         return self
 
     def get_entries(self):

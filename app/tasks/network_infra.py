@@ -1,25 +1,27 @@
-import requests
-from app import celery
-from app.libs.url import FactoryDataURL
-from app.tasks.notification import task_notification
-from app.libs.statusCode import check_status
-from app.libs.notifyError import notify_error
 
-from app.services.root import Root
+from app import celery
+from app.services.infra_network import InfraNetwork
 
 
 @celery.task(name="network.infra", bind=True)
-def task_network_infra(self, owner_id, filters=''):
-    path = FactoryDataURL.make(path="systems")
-    context = requests.post(path, json={'query': filters})
+def task_network_infra(self, owner_id, data):
+    options = {
+        'with_labels': False,
+        'arrowsize': 15,
+        'node_shape': 's',
+        'node_size': 500,
+        'node_color': '#782675',
+        'font_color': 'white',
+        'alpha': 0.9,
+        'linewidths': 5
+    }
 
-    if context.status_code is 200:
-        result = context.json()
-        if 'found' in result and result['found'] > 0:
-            return Root(result['items'])\
-                                .validate_roots()\
-                                .fill_gaps_root()\
-                                .get_roots_id()
+    labels = {
+        'font_weight': 'bold'
+    }
 
-    if check_status(context):
-        return notify_error(task='entry', owner_id=owner_id, msg=context.text)
+    network = InfraNetwork()
+    network.make(data).get_graph()
+    pos = network.save_svg(options, labels)
+
+    return {'cardials': pos}

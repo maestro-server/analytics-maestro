@@ -15,23 +15,21 @@ class GuestEntry(object):
 
         cutitem = self._items[0].get('family')
         idx = self.hierarch.index(cutitem) + 1
-        
         cutover = self.multiple(idx)
 
-        print(cutover)
-        for item in self._items:
+        for key, item in enumerate(self._items):
             family = item.get('family')
+            if family not in self.hierarch[cutover-self.max:cutover]:
+                break
 
-            if family in self.hierarch[cutover:self.max]:
-                print(key)
+        self._items = self._items[:key-1]
 
-            print(self.hierarch[cutover-self.max:cutover])
-
-        print()
-
-        return []
+        return self._items
     
     def multiple(self, n):
+        if n % self.max is 0:
+            return n
+
         return n + (self.max - n % self.max)
 
     def cmp_items(self, a, b):
@@ -48,10 +46,6 @@ class GuestEntry(object):
 class GuestHierarchMap(object):
     @staticmethod
     def map():
-        return ['Serverless', 
-    'ObjectStorage', 'ServiceDiscovery', 'VPN', 'CI/CD',  'Monitor', 'Cache', 'CDN', 'ApiGateway', 'Loadbalance', 'NAS', 'Logs', 'SMTP', 
-    'Auth', 'Broker', 'Repository', 'Database', 'ContainerOrchestration', 'Application', 'ServiceMesh', 'DNS']
-
         return ['CDN', 'ApiGateway', 'Loadbalance', 'NAS', 'Application', 'Serverless', 
     'ObjectStorage', 'ServiceDiscovery', 'VPN', 'CI/CD',  'Monitor', 'Cache', 'Logs', 'SMTP', 
     'Auth', 'Broker', 'Repository', 'Database', 'ContainerOrchestration', 'ServiceMesh', 'DNS']

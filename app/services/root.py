@@ -23,7 +23,7 @@ class Root(object):
         for system in self.__data:
             entry = system.get('entry')
             if isinstance(entry, (list, tuple)) and len(entry) > 0:
-                ids = list(map(lambda x: x.get('_id'), entry))
+                ids = self.map_reduce(entry)
                 self.push_bag(ids)
 
             else:
@@ -34,14 +34,17 @@ class Root(object):
     def fill_gaps_root(self, requester):
         entries = self.crawler(self.__bag_fallen, requester)\
                         .find_apps()\
-                        .propagate_entries()\
                         .get_entries()
 
+        entries = self.map_reduce(entries)
         self.push_bag(entries)
         return self
 
     def get_roots_id(self):
         return self.__bag_apps
+
+    def map_reduce(self, entry):
+        return list(map(lambda x: x.get('_id'), entry))
 
     def cleanup(self):
         self.__data = []

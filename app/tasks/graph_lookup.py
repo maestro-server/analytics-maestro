@@ -1,25 +1,37 @@
-import requests
+import json
 from app import celery
-from app.libs.url import FactoryDataURL
-from app.tasks.notification import task_notification
-from app.libs.statusCode import check_status
-from app.libs.notifyError import notify_error
+from app.repository.externalMaestroData import ExternalMaestroData
 
-from app.services.root import Root
+from .network_infra import task_network_infra
 
+types = {
+    'infra': task_network_infra
+}
 
 @celery.task(name="graphlookup.api", bind=True)
-def task_graphlookup(self, owner_id, filters=''):
-    path = FactoryDataURL.make(path="systems")
-    context = requests.post(path, json={'query': filters})
+def task_graphlookup(self, owner_id, entries, type):
+    entity = 'applications'
 
-    if context.status_code is 200:
-        result = context.json()
-        if 'found' in result and result['found'] > 0:
-            return Root(result['items'])\
-                                .validate_roots()\
-                                .fill_gaps_root()\
-                                .get_roots_id()
+    pipeline = [
+        {'$match': {'_id': {'$in': entries}, 'roles._id': owner_id}},
+        {
+            '$graphLookup': {
+                'from': entity,
+                'startWith': '$deps._id',
+                'connectFromField': 'deps._id',
+                'connectToField': '_id',
+                'as': 'nodes',
+                'maxDepth': 10,
+                'depthField': 'steps'
+            }
+        },
+        {'$project': {'name': 1, 'deps': 1, 'nodes.name': 1, 'nodes.steps': 1, 'nodes.deps': 1}}
+    ];
 
-    if check_status(context):
-        return notify_error(task='entry', owner_id=owner_id, msg=context.text)
+    jpipeline = json.dumps(pipeline)
+    ExternalRequest = ExternalMaestroData(owner_id=owner_id)
+    items = ExternalRequest.get_request(path="aggregate", json={'entity': entity, 'pipeline': jpipeline})
+
+    network_id = types[type](owner_id, items)
+
+    return {'qtd': len(items)}

@@ -1,5 +1,4 @@
-import os
-import requests
+
 from app.views import app
 from app import celery
 from app.repository.externalMaestro import ExternalMaestro
