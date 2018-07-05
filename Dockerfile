@@ -8,10 +8,7 @@ RUN apk add --no-cache tini su-exec
 RUN addgroup app && adduser -S app
 
 ENV APP_PATH=/opt/application
-
-RUN apk add --no-cache python3 \
-    && python3 -m ensurepip \
-    && pip3 install --upgrade pip gunicorn
+RUN pip3 install --upgrade pip gunicorn
 
 WORKDIR $APP_PATH
 
