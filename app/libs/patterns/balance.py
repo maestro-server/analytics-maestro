@@ -1,0 +1,34 @@
+class BalancePattern(object):
+    def soft_balance(self, step_pace=1):
+        subsuccers = self._helper.only_subdirect_successors()
+        succers = self._helper.only_direct_not_drawed()
+        succers_size = len(succers + subsuccers)
+
+        start_y = self._default_y()
+
+        nstep = self._step + step_pace
+        nposy = self._max_empty_y(nstep)
+
+        if (succers_size > 0) and (start_y > nposy):
+            diff = start_y - nposy
+            for i in range(diff):
+                posy = nposy + i
+                self._grid.create_dummy((nstep, posy))
+
+    def child_balance(self):
+        succers = self._helper.only_direct_not_drawed()
+        succers_size = len(succers)
+
+        if succers_size >= 2:
+            self.balance_nodes(succers_size - 1)
+
+    def balance_nodes(self, qtd):
+        for nl in range(self._step):
+            last = self._max_empty_y(nl)
+            for np in range(qtd):
+                posy = last + np
+                self._grid.create_dummy((nl, posy))
+
+            anode = self.find_next_node(0, last + 1, nl)
+            if anode:
+                self._grid.inc_size_index(anode, qtd)
