@@ -23,6 +23,7 @@ class ExternalMaestro(object):
 
         try:
             MaestroRqt.exec_request(path, json, verb)
+            logger.debug("MaestroRequest External path - %", path)
         except Exception as error:
             self.error_handling(task='ExternalMaestro', owner_id=self._owner_id, msg=str(error))
 

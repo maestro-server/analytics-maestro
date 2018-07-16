@@ -6,8 +6,8 @@ from app.repository.externalMaestroData import ExternalMaestroData
 from .graph_lookup import task_graphlookup
 
 
-@celery.task(name="entry.api", bind=True)
-def task_entry(self, owner_id, type, filters=''):
+@celery.task(name="entry.api")
+def task_entry(owner_id, typed, filters=''):
 
     ExternalRequest = ExternalMaestroData(owner_id=owner_id)
     items = ExternalRequest.get_request(path="systems", json={'query': filters})
@@ -17,6 +17,6 @@ def task_entry(self, owner_id, type, filters=''):
                 .fill_gaps_root(ExternalRequest)\
                 .get_roots_id()
 
-    task_graphlookup(owner_id, entries, type)
+    task_graphlookup(owner_id, entries, typed)
 
     return {'entries': entries}

@@ -10,7 +10,7 @@ class BaseNetwork(object):
         if 'deps' in item:
             for dps in item['deps']:
                 w = item.get('steps', -1)
-                self.graph.add_edge(item['name'], dps['name'], weight=w + 1)
+                self.graph.add_edge(item['_id'], dps['_id'], weight=w + 1)
 
     def create_node(self, node_id, item, root=False):
         if node_id not in self.duplicate:
@@ -19,7 +19,7 @@ class BaseNetwork(object):
 
     def make(self, data, i=0):
         for item in data:
-            self.create_node(item['name'], item, i is 0)
+            self.create_node(item['_id'], item, i is 0)
 
             if 'nodes' in item and len(item['nodes']) > 0:
                 self.make(item['nodes'], i + 1)

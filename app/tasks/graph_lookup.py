@@ -2,14 +2,14 @@ import json
 from app import celery
 from app.repository.externalMaestroData import ExternalMaestroData
 
-from .network_infra import task_network_infra
+from .network_bussiness import task_network_bussiness
 
 types = {
-    'infra': task_network_infra
+    'bussiness': task_network_bussiness
 }
 
-@celery.task(name="graphlookup.api", bind=True)
-def task_graphlookup(self, owner_id, entries, type):
+@celery.task(name="graphlookup.api")
+def task_graphlookup(owner_id, entries, typed):
     entity = 'applications'
 
     pipeline = [
@@ -21,17 +21,17 @@ def task_graphlookup(self, owner_id, entries, type):
                 'connectFromField': 'deps._id',
                 'connectToField': '_id',
                 'as': 'nodes',
-                'maxDepth': 10,
+                'maxDepth': 40,
                 'depthField': 'steps'
             }
         },
-        {'$project': {'name': 1, 'deps': 1, 'nodes.name': 1, 'nodes.steps': 1, 'nodes.deps': 1}}
+        {'$project': {'name': 1, 'deps': 1, 'nodes': 1}}
     ];
 
     jpipeline = json.dumps(pipeline)
     ExternalRequest = ExternalMaestroData(owner_id=owner_id)
     items = ExternalRequest.get_request(path="aggregate", json={'entity': entity, 'pipeline': jpipeline})
-
-    network_id = types[type](owner_id, items)
+ 
+    network_id = types[typed](owner_id, items, entries)
 
     return {'qtd': len(items)}

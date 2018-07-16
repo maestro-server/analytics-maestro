@@ -18,7 +18,7 @@ class GraphApp(Resource):
             type = valid['type']
 
             try:
-                entry_id = task_entry(filters=valid['filters'], owner_id=owner_id, type=type)
+                entry_id = task_entry(filters=valid['filters'], owner_id=owner_id, typed=type)
             except Exception as error:
                 task_notification(owner_id=owner_id, msg=str(error), status='error')
                 return {'message': str(error)}, 501
