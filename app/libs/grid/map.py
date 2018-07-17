@@ -20,21 +20,21 @@ class GridMap(Grid, GridMapSwift, GridMapDummies):
     def in_index(self, item):
         return item in self._index
 
-    def create_position(self, pos, label, size=1):
-        self.create_index(label, pos, size)
+    def create_position(self, pos, label, size=1, attr={}):
+        self.create_index(label, pos, size, attr)
         return self._add_grid(*pos, label)
-
-    def create_index(self, label, pos, size=1):
-        self._index[label] = (*pos, size)
+    
+    def create_index(self, label, pos, size, attr):
+        self._index[label] = (*pos, size, attr)
         return pos, size
 
     def inc_size_index(self, anode, qtd=1):
         tmp = self.get_index(anode)
-        self.update_index(anode, (tmp[0], tmp[1]), tmp[2] + qtd)
-
-    def update_index(self, anode, pos, size):
+        self.update_index(anode, (tmp[0], tmp[1]), tmp[2]+qtd, tmp[3])
+        
+    def update_index(self, anode, pos, size, attr):
         self.del_item(anode)
-        self.create_index(anode, pos, size)
+        self.create_index(anode, pos, size, attr)
 
     def del_item(self, anode):
         del self._index[anode]

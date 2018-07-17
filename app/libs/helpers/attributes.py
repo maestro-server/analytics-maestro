@@ -16,5 +16,8 @@ class HelperDefineAttributes(HelperDefineStep, HelperDefineSuccersPredecessors):
 
         self._step = self.make_step()
 
+    def get_attrs(self):
+        return self.get_node_attr('attr')
+
     def get_id(self):
         return self.get_node_attr('uid')

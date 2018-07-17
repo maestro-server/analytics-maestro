@@ -9,3 +9,5 @@ app = Flask(__name__)
 app.config.from_object('instance.config.Config')
 
 celery = make_celery(app)
+
+from app import views

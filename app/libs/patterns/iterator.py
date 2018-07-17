@@ -7,7 +7,7 @@ from .chessPawn import ChessPawnPattern
 
 class IteratorMasterPattern(BasePattern, SinglePattern, BalancePattern, ChessHorsePattern, ChessPawnPattern):
     def map(self):
-        return ['chess_pawn', 'chess_horse', 'soft_balance', 'child_balance', 'set_position', 'grow_node']
+        return ['chess_pawn', 'chess_horse', 'soft_balance', 'child_balance', 'set_position']
 
     def find_rule(self):
         for check in self.map():

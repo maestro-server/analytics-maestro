@@ -7,7 +7,7 @@ Licence: GPLv3
 from app import app
 from flask_restful import Api
 from flask import jsonify
-from .controller import *
+from .controller import GraphApp, HomeApp
 
 api = Api(app)
 

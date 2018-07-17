@@ -25,7 +25,20 @@ def task_graphlookup(owner_id, entries, typed):
                 'depthField': 'steps'
             }
         },
-        {'$project': {'name': 1, 'deps': 1, 'nodes._id': 1}}
+        {
+            '$project':
+                {
+                    'name': 1, 
+                    'family': 1, 
+                    'deps._id': 1, 
+                    'deps.endpoint': 1, 
+                    'nodes._id': 1, 
+                    'nodes.deps': 1, 
+                    'nodes.name': 1, 
+                    'nodes.family': 1,
+                    'nodes.servers': 1
+                }
+            }
     ];
 
     ExternalRequest = ExternalMaestroData(owner_id=owner_id)
