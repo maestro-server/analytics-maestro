@@ -2,7 +2,7 @@
 from app import celery
 from app.libs.network.baseNetwork import BaseNetwork
 from app.services.gridOrchestrator import GridOrchestrator
-from .draw_bussiness import task_draw_bussiness
+from .enrichment_apps import task_enrichment
 
 
 @celery.task(name="network.bussiness")
@@ -18,6 +18,6 @@ def task_network_bussiness(owner_id, data, entries):
     index = Orchestration.get_grid()._index
     edges = network.graph.edges()
 
-    task_draw_bussiness(owner_id, grid, index, edges)
+    task_enrichment(owner_id, grid, index, edges)
 
     return {'cardials': ""}

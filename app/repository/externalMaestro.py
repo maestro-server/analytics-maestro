@@ -1,4 +1,4 @@
-
+import json
 from app.libs.logger import logger
 from .maestroRequest import MaestroRequest
 
@@ -10,19 +10,34 @@ class ExternalMaestro(object):
 
     def get_uri(self):
         self._base
-        
-    def get_request(self, path, json={}):
-        return self.request(path, json).get_results()
+
+    def make_filter(self, filter, active=True):
+        base = {'roles._id': self._owner_id, 'active': active}
+
+        if any(filter) and isinstance(filter, dict):
+            return {**base, **filter}
+
+        return base
+
+    def get_request(self, path, query={}, active=True):
+        merged = self.make_filter(query, active)
+
+        jquery = json.dumps(merged)
+        return self.request(path, {'query': jquery}).get_results()
+
+    def get_aggregation(self, path, entity, pipeline):
+        jpipeline = json.dumps(pipeline)
+        return self.request(path, {'entity': entity, 'pipeline': jpipeline}).get_results()
+
+    def put_request(self, path, body={}):
+        return self.request(path, body, 'put').get_raw()
     
-    def put_request(self, path, json={}):
-        return self.request(path, json, 'put').get_raw()
-    
-    def request(self, path, json, verb='post'):
+    def request(self, path, query, verb='post'):
         path = "%s/%s" % (self._base, path)
         MaestroRqt = MaestroRequest()
 
         try:
-            MaestroRqt.exec_request(path, json, verb)
+            MaestroRqt.exec_request(path, query, verb)
             logger.debug("MaestroRequest External path - %", path)
         except Exception as error:
             self.error_handling(task='ExternalMaestro', owner_id=self._owner_id, msg=str(error))

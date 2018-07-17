@@ -25,13 +25,11 @@ def task_graphlookup(owner_id, entries, typed):
                 'depthField': 'steps'
             }
         },
-        {'$project': {'name': 1, 'deps': 1, 'nodes': 1}}
+        {'$project': {'name': 1, 'deps': 1, 'nodes._id': 1}}
     ];
 
-    jpipeline = json.dumps(pipeline)
     ExternalRequest = ExternalMaestroData(owner_id=owner_id)
-    items = ExternalRequest.get_request(path="aggregate", json={'entity': entity, 'pipeline': jpipeline})
- 
+    items = ExternalRequest.get_aggregation(path="aggregate", entity=entity, pipeline=pipeline)
     network_id = types[typed](owner_id, items, entries)
 
     return {'qtd': len(items)}

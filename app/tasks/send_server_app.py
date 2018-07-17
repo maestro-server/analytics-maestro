@@ -1,6 +1,5 @@
 
 from app import celery
-from app.libs.drawing.layoutSVG import DrawLayout
 
 
 @celery.task(name="send.server")

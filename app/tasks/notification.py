@@ -12,6 +12,6 @@ def task_notification(owner_id, msg, status='success', more={}):
 
     base = app.config['MAESTRO_DATA_URI']
     status = ExternalMaestro(base)\
-                            .put_request(path="events", json={'body': [merged]})
+                            .put_request(path="events", body={'body': [merged]})
 
     return {'owner_id': owner_id, 'status': status}

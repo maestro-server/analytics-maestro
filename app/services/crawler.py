@@ -15,9 +15,8 @@ class Crawler(object):
         systems = {
             'system._id': self.__bag_systems
         }
-  
-        filters = json.dumps(systems)
-        items = self._requester.get_request(path="applications", json={'query': filters})
+
+        items = self._requester.get_request(path="applications", query=systems)
 
         if isinstance(items, (list, tuple)) and len(items) > 0:
             self.__bag_ids = self.__guest(items).get_entries()
