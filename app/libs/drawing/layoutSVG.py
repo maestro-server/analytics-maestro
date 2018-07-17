@@ -40,4 +40,4 @@ class DrawLayout(object):
         return self
     
     def save(self):
-        self.drawer.save()
+        return self.drawer.save()

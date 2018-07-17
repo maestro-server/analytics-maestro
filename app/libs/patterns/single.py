@@ -20,7 +20,7 @@ class SinglePattern(object):
                 nps = (self._step, start_y + ps)
                 self._grid.create_dummy(nps)
 
-            size = succers_size-1
+            size = succers_size
             
         return size
 

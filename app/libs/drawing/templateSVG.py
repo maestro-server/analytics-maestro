@@ -52,3 +52,4 @@ class DrawTemplateSVG(object):
 
     def save(self):
         self.dwg.save()
+        return self.dwg.get_xml()
