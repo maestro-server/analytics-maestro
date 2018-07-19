@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 345"><defs><style>.a{fill:#f58536;}.b{fill:#c4692c;}.c{fill:#a0501a;}.d{fill:#fff;}</style></defs><title>Asset 10</title><polygon class="a" points="270 267 134 345 135 186 269 68 270 267"/><polygon class="b" points="135 345 0 268 2 110 135 186 135 345"/><polygon class="c" points="135 186 2 110 130 0 269 68 135 186"/><path class="d" d="M20.51,146.07l-.07,46.35,93.88,53.5.34-47.35ZM49.4,201.23,27.46,188.77l.06-31.09,22,12.3ZM78,217.47,55.72,204.82l.11-31.29L78.16,186ZM107,234,84.42,221.11l.17-31.49,22.67,12.68Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 266.4 321.63">
+    <defs>
+        <style>.a{fill:#c4692c;}.b{fill:#f58536;}.c{fill:#a0501a;}.d{fill:#fff;}</style>
+    </defs>
+    <title>Asset 13</title>
+    <polygon class="a" points="133.2 321.63 0 244.63 0 124.8 133.2 200.63 133.2 321.63"/>
+    <polygon class="b" points="133.2 321.63 266.4 244.63 266.4 74.8 133.2 200.63 133.2 321.63"/>
+    <polygon class="c" points="133.2 0 0 124.8 133.2 200.63 266.4 74.8 133.2 0"/>
+    <path class="d"
+          d="M19,156.27l-.07,46.34,93.88,53.51.34-47.35Zm28.9,55.15L25.9,199,26,167.87l22,12.31Zm28.6,16.25L54.16,215l.12-31.29,22.33,12.5Zm29,16.49L82.86,231.31l.17-31.5L105.7,212.5Z"/>
+</svg>
