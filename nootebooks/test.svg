@@ -1,2 +1,147 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<svg baseProfile="full" height="540.0" version="1.1" width="734.2857142857143" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol id="grid" viewBox="0,0,266.4,156.32"><polyline fill="#a0501a" points="133.2,0 0,78.16 133.2,156.32 266.4,78.16" /></symbol></defs><rect fill="#ededed" height="540.0" width="734.2857142857143" x="0" y="0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="0.0" /><use height="120" width="100" x="280.0" xlink:href="#grid" y="32.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="42.0" /><use height="120" width="100" x="350.0" xlink:href="#grid" y="74.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="84.0" /><use height="120" width="100" x="420.0" xlink:href="#grid" y="116.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="125.99999999999999" /><use height="120" width="100" x="490.0" xlink:href="#grid" y="158.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="168.0" /><use height="120" width="100" x="560.0" xlink:href="#grid" y="200.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="210.0" y="42.000000000000014" /><use height="120" width="100" x="210.0" xlink:href="#grid" y="74.00000000000001" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="84.00000000000001" /><use height="120" width="100" x="280.0" xlink:href="#grid" y="116.00000000000001" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="126.00000000000001" /><use height="120" width="100" x="350.0" xlink:href="#grid" y="158.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="168.0" /><use height="120" width="100" x="420.0" xlink:href="#grid" y="200.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="210.0" /><use height="120" width="100" x="490.0" xlink:href="#grid" y="242.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="252.0" /><use height="120" width="100" x="560.0" xlink:href="#grid" y="284.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="630.0" y="294.0" /><use height="120" width="100" x="630.0" xlink:href="#grid" y="326.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="140.0" y="84.0" /><use height="120" width="100" x="140.0" xlink:href="#grid" y="116.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="210.0" y="126.0" /><use height="120" width="100" x="210.0" xlink:href="#grid" y="158.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="168.0" /><use height="120" width="100" x="280.0" xlink:href="#grid" y="200.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="210.0" /><use height="120" width="100" x="350.0" xlink:href="#grid" y="242.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="252.0" /><use height="120" width="100" x="420.0" xlink:href="#grid" y="284.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="294.0" /><use height="120" width="100" x="490.0" xlink:href="#grid" y="326.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="336.0" /><use height="120" width="100" x="560.0" xlink:href="#grid" y="368.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="70.0" y="126.0" /><use height="120" width="100" x="70.0" xlink:href="#grid" y="158.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="140.0" y="168.0" /><use height="120" width="100" x="140.0" xlink:href="#grid" y="200.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="210.0" y="210.0" /><use height="120" width="100" x="210.0" xlink:href="#grid" y="242.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="252.0" /><use height="120" width="100" x="280.0" xlink:href="#grid" y="284.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="294.0" /><use height="120" width="100" x="350.0" xlink:href="#grid" y="326.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="336.0" /><use height="120" width="100" x="420.0" xlink:href="#grid" y="368.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="378.0" /><use height="120" width="100" x="490.0" xlink:href="#grid" y="410.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="0.0" y="168.0" /><use height="120" width="100" x="0.0" xlink:href="#grid" y="200.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="70.0" y="210.0" /><use height="120" width="100" x="70.0" xlink:href="#grid" y="242.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="140.0" y="252.0" /><use height="120" width="100" x="140.0" xlink:href="#grid" y="284.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="210.0" y="294.0" /><use height="120" width="100" x="210.0" xlink:href="#grid" y="326.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="336.0" /><use height="120" width="100" x="280.0" xlink:href="#grid" y="368.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="378.0" /><use height="120" width="100" x="350.0" xlink:href="#grid" y="410.0" /><rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="420.0" /><use height="120" width="100" x="420.0" xlink:href="#grid" y="452.0" /></svg>
+<svg baseProfile="full" height="834.0" version="1.1" width="1224.2857142857142" xmlns="http://www.w3.org/2000/svg"
+     xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="grid" viewBox="0 0 266.4 316.32">
+            <defs>
+                <style>.a{fill:#c4692c;}.b{fill:#f58536;}.c{fill:#a0501a;}.d{fill:#fff;}</style>
+            </defs>
+            <title>Asset 21</title>
+        <polygon class="a" points="133.2 316.32 0 238.16 0 118.16 133.2 196.32 133.2 316.32"/>
+        <polygon class="b" points="133.2 316.32 266.4 238.16 266.4 78.16 133.2 196.32 133.2 316.32"/>
+        <polygon class="c" points="133.2 0 0 118.16 133.2 196.32 266.4 78.16 133.2 0"/>
+        <path class="d"
+          d="M17.8,198.81,112,254V206.65L17.8,151.41ZM81.88,198l22.67,13.3v30.82l-22.67-13.3ZM53.12,181.12l22.33,13.1V225l-22.33-13.1ZM24.81,164.45l22,13v30.82l-22-12.91Z"/>
+
+        </symbol>
+    </defs>
+    <rect fill="#ededed" height="834.0" width="1224.2857142857142" x="0" y="0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="489.99999999999994" y="0.0"/>
+    <use height="60" width="50" x="489.99999999999994" xlink:href="#grid" y="42.0"/>
+    <use height="60" width="50" x="549.99999999999994" xlink:href="#grid" y="62.0"/>
+
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="42.0"/>
+    <use height="120" width="100" x="560.0" xlink:href="#grid" y="74.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="630.0" y="84.0"/>
+    <use height="120" width="100" x="630.0" xlink:href="#grid" y="116.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="42.00000000000003"/>
+    <use height="120" width="100" x="420.0" xlink:href="#grid" y="74.00000000000003"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="84.00000000000003"/>
+    <use height="120" width="100" x="490.0" xlink:href="#grid" y="116.00000000000003"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="126.00000000000003"/>
+    <use height="120" width="100" x="560.0" xlink:href="#grid" y="158.00000000000003"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="84.0"/>
+    <use height="120" width="100" x="350.0" xlink:href="#grid" y="116.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="126.0"/>
+    <use height="120" width="100" x="420.0" xlink:href="#grid" y="158.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="168.0"/>
+    <use height="120" width="100" x="490.0" xlink:href="#grid" y="200.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="210.0"/>
+    <use height="120" width="100" x="560.0" xlink:href="#grid" y="242.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="126.0"/>
+    <use height="120" width="100" x="280.0" xlink:href="#grid" y="158.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="168.0"/>
+    <use height="120" width="100" x="350.0" xlink:href="#grid" y="200.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="210.0"/>
+    <use height="120" width="100" x="420.0" xlink:href="#grid" y="242.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="252.0"/>
+    <use height="120" width="100" x="490.0" xlink:href="#grid" y="284.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="294.0"/>
+    <use height="120" width="100" x="560.0" xlink:href="#grid" y="326.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="630.0" y="336.0"/>
+    <use height="120" width="100" x="630.0" xlink:href="#grid" y="368.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="700.0" y="378.0"/>
+    <use height="120" width="100" x="700.0" xlink:href="#grid" y="410.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="770.0" y="420.0"/>
+    <use height="120" width="100" x="770.0" xlink:href="#grid" y="452.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="840.0" y="462.0"/>
+    <use height="120" width="100" x="840.0" xlink:href="#grid" y="494.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="980.0" y="546.0"/>
+    <use height="120" width="100" x="980.0" xlink:href="#grid" y="578.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="210.0" y="168.0"/>
+    <use height="120" width="100" x="210.0" xlink:href="#grid" y="200.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="210.0"/>
+    <use height="120" width="100" x="280.0" xlink:href="#grid" y="242.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="252.0"/>
+    <use height="120" width="100" x="350.0" xlink:href="#grid" y="284.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="294.0"/>
+    <use height="120" width="100" x="420.0" xlink:href="#grid" y="326.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="336.0"/>
+    <use height="120" width="100" x="490.0" xlink:href="#grid" y="368.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="378.0"/>
+    <use height="120" width="100" x="560.0" xlink:href="#grid" y="410.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="630.0" y="420.0"/>
+    <use height="120" width="100" x="630.0" xlink:href="#grid" y="452.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="700.0" y="462.0"/>
+    <use height="120" width="100" x="700.0" xlink:href="#grid" y="494.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="770.0" y="504.0"/>
+    <use height="120" width="100" x="770.0" xlink:href="#grid" y="536.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="910.0" y="588.0"/>
+    <use height="120" width="100" x="910.0" xlink:href="#grid" y="620.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="140.0" y="210.0"/>
+    <use height="120" width="100" x="140.0" xlink:href="#grid" y="242.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="210.0" y="252.0"/>
+    <use height="120" width="100" x="210.0" xlink:href="#grid" y="284.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="294.0"/>
+    <use height="120" width="100" x="280.0" xlink:href="#grid" y="326.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="336.0"/>
+    <use height="120" width="100" x="350.0" xlink:href="#grid" y="368.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="378.0"/>
+    <use height="120" width="100" x="420.0" xlink:href="#grid" y="410.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="420.0"/>
+    <use height="120" width="100" x="490.0" xlink:href="#grid" y="452.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="462.0"/>
+    <use height="120" width="100" x="560.0" xlink:href="#grid" y="494.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="630.0" y="504.0"/>
+    <use height="120" width="100" x="630.0" xlink:href="#grid" y="536.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="700.0" y="546.0"/>
+    <use height="120" width="100" x="700.0" xlink:href="#grid" y="578.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="770.0" y="588.0"/>
+    <use height="120" width="100" x="770.0" xlink:href="#grid" y="620.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="840.0" y="630.0"/>
+    <use height="120" width="100" x="840.0" xlink:href="#grid" y="662.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="70.0" y="252.0"/>
+    <use height="120" width="100" x="70.0" xlink:href="#grid" y="284.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="140.0" y="294.0"/>
+    <use height="120" width="100" x="140.0" xlink:href="#grid" y="326.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="210.0" y="336.0"/>
+    <use height="120" width="100" x="210.0" xlink:href="#grid" y="368.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="378.0"/>
+    <use height="120" width="100" x="280.0" xlink:href="#grid" y="410.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="420.0"/>
+    <use height="120" width="100" x="350.0" xlink:href="#grid" y="452.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="462.0"/>
+    <use height="120" width="100" x="420.0" xlink:href="#grid" y="494.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="490.0" y="504.0"/>
+    <use height="120" width="100" x="490.0" xlink:href="#grid" y="536.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="546.0"/>
+    <use height="120" width="100" x="560.0" xlink:href="#grid" y="578.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="630.0" y="588.0"/>
+    <use height="120" width="100" x="630.0" xlink:href="#grid" y="620.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="700.0" y="630.0"/>
+    <use height="120" width="100" x="700.0" xlink:href="#grid" y="662.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="770.0" y="672.0"/>
+    <use height="120" width="100" x="770.0" xlink:href="#grid" y="704.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="0.0" y="294.0"/>
+    <use height="120" width="100" x="0.0" xlink:href="#grid" y="326.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="70.0" y="336.0"/>
+    <use height="120" width="100" x="70.0" xlink:href="#grid" y="368.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="140.0" y="378.0"/>
+    <use height="120" width="100" x="140.0" xlink:href="#grid" y="410.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="210.0" y="420.0"/>
+    <use height="120" width="100" x="210.0" xlink:href="#grid" y="452.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="280.0" y="462.0"/>
+    <use height="120" width="100" x="280.0" xlink:href="#grid" y="494.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="350.0" y="504.0"/>
+    <use height="120" width="100" x="350.0" xlink:href="#grid" y="536.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="420.0" y="546.0"/>
+    <use height="120" width="100" x="420.0" xlink:href="#grid" y="578.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="489.99999999999994" y="588.0"/>
+    <use height="120" width="100" x="489.99999999999994" xlink:href="#grid" y="620.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="560.0" y="630.0"/>
+    <use height="120" width="100" x="560.0" xlink:href="#grid" y="662.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="630.0" y="672.0"/>
+    <use height="120" width="100" x="630.0" xlink:href="#grid" y="704.0"/>
+    <rect fill="rgb(255, 255, 0)" fill-opacity="0.25" height="120" width="100" x="700.0" y="714.0"/>
+    <use height="120" width="100" x="700.0" xlink:href="#grid" y="746.0"/>
+</svg>
