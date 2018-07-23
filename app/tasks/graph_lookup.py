@@ -29,7 +29,8 @@ def task_graphlookup(owner_id, entries, typed):
             '$project':
                 {
                     'name': 1, 
-                    'family': 1, 
+                    'family': 1,
+                    'servers': 1,
                     'deps._id': 1, 
                     'deps.endpoint': 1, 
                     'nodes._id': 1, 
