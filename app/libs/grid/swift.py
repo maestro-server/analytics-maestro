@@ -22,4 +22,4 @@ class GridMapSwift(object):
             npos = self.get_index(ccnode)
             self.del_item(ccnode)
 
-            self.create_position((npos[0] + diff, npos[1]), ccnode, npos[2])
+            self.create_position((npos[0]+diff, npos[1]), ccnode, npos[2], npos[3])

@@ -30,13 +30,14 @@ class HelperDefineStep(object):
         default_x = self.get_node_attr('weight')
 
         if len(predecessors) > 0:
-            most = 0
+            most = default_x
 
             for pre in predecessors:
                 wn = self._get_weight(pre)
+                diff = wn - default_x
 
                 if most < wn:
-                    most = wn
+                    most = wn + 1
 
-            default_x = most + 1
+            default_x = most
         return default_x

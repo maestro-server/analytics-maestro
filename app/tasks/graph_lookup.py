@@ -35,7 +35,8 @@ def task_graphlookup(owner_id, entries, typed):
                     'deps.endpoint': 1, 
                     'nodes._id': 1, 
                     'nodes.deps': 1, 
-                    'nodes.name': 1, 
+                    'nodes.name': 1,
+                    'nodes.steps': 1,
                     'nodes.family': 1,
                     'nodes.servers': 1,
                     'nodes.system': 1

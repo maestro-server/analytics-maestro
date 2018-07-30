@@ -12,6 +12,13 @@ class ChessHorsePattern(object):
                 diff = ((w + switch_y) - self._step)
 
             self.chess_horse_dummie(diff, posy)
+            self.chess_horse_balance()
+
+    def chess_horse_balance(self):
+        succers = self._helper.only_direct_not_drawed()
+        succers_size = len(succers)
+
+        if succers_size >= 1:
             self.balance_nodes(1)
 
     def chess_horse_dummie(self, diff, posy):

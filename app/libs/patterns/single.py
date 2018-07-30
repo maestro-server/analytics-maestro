@@ -29,6 +29,5 @@ class SinglePattern(object):
         subdirect = len(subsuccers)
 
         sm = 0
-        sm += 1 if (subdirect >= 1) and (succers_size == 0) else 0
         sm += 1 if subdirect >= 1 else 0
         return sm
