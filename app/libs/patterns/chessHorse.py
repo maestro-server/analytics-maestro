@@ -1,8 +1,14 @@
 class ChessHorsePattern(object):
     def chess_horse(self):
         succers = self._helper.only_subdirect_successors()
+        lsuccers = len(succers)
 
-        if len(succers) >= 1:
+        if (lsuccers >= 1):
+            notdrawed = self._helper.only_subdirect_not_drawed()
+            lnotdrawed = len(notdrawed)
+
+            is_not_drawed = lsuccers - lnotdrawed
+
             posy = self._max_empty_y(self._step)
 
             diff = 0
@@ -10,6 +16,9 @@ class ChessHorsePattern(object):
                 w = self._helper.get_weight(item)
                 switch_y = self.chess_horse_eligible_y(item, w)
                 diff = ((w + switch_y) - self._step)
+
+            if is_not_drawed == 0:
+                diff -= 1
 
             self.chess_horse_dummie(diff, posy)
             self.chess_horse_balance()

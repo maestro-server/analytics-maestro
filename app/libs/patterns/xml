@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="786" dy="637" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1"
+              pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+    <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;" edge="1"
+                parent="1" source="2" target="3">
+            <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="2" value="teste1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+            <mxGeometry x="150" y="200" width="210" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="3" value="teste2&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+            <mxGeometry x="150" y="370" width="210" height="80" as="geometry"/>
+        </mxCell>
+    </root>
+</mxGraphModel>

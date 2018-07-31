@@ -5,7 +5,8 @@ class BasePattern(object):
         self._step = self._helper.get_step()
 
         self._options = {
-            'max_inter': 30
+            'max_inter': 30,
+            'grow_mark': '-'
         }
 
     def _default_y(self):

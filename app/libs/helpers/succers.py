@@ -49,5 +49,16 @@ class HelperDefineSuccersPredecessors(object):
 
         return self._predecessors
 
+    def grab_drawed_predecers(self):
+        preds = self.direct_predecessors()
+        dpreds = []
+
+        if len(preds) > 0:
+            for node in preds:
+                if self._grid.in_index(node):
+                    dpreds.append(node)
+
+        return dpreds
+
     def grab_predecessors(self, node):
         return set(self._graph.predecessors(node))

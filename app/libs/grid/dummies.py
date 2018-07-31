@@ -1,4 +1,5 @@
 class GridMapDummies(object):
-    def create_dummy(self, pos):
+    def create_dummy(self, pos, tpl=''):
         if not self.has_pos(*pos):
-            return self._add_grid(*pos, self._dmark)
+            mark = "%s%s" % (self._dmark, tpl)
+            return self._add_grid(*pos, mark)
