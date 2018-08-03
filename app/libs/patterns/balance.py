@@ -16,7 +16,7 @@ class BalancePattern(object):
                 posy = nposy + i
                 self._grid.create_dummy((nstep, posy))
 
-    def self_balance(self, step_pace=1):
+    def self_balance(self, step_pace=0):
         subsuccers = self._helper.only_subdirect_successors()
         succers = self._helper.only_direct_not_drawed()
         succers_size = len(succers + subsuccers)
