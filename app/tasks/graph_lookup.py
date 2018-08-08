@@ -39,7 +39,8 @@ def task_graphlookup(owner_id, entries, typed):
                     'nodes.steps': 1,
                     'nodes.family': 1,
                     'nodes.servers': 1,
-                    'nodes.system': 1
+                    'nodes.system': 1,
+                    'nodes.datacenters': 1
                 }
             }
     ];
