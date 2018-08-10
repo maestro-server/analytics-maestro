@@ -1,43 +1,34 @@
-from app.libs.histograms.grid import GridHistogram
+
 from .templateSVG import DrawTemplateSVG
 
 
 class DrawLayout(object):
-    def __init__(self, grid, index, gridhist=GridHistogram, draw=DrawTemplateSVG):
-        
+    def __init__(self, grid, index, servers={}, draw=DrawTemplateSVG):
+
         self._grid = grid
         self._index = index
-        
-        GridHistogram = gridhist(self._grid)
-        self._nmax = GridHistogram.max_value()
-        self._hist = GridHistogram.get_counter()
-        
-        self.drawer = draw(self._hist, self._nmax)
+
+        self._max_x = max(self._grid, key=int)
+        self._max_y = max(self._grid[0], key=int)
+        self.setup_drawer(draw, servers)
+
+    def setup_drawer(self, draw, servers):
+        tmax = (self._max_x, self._max_y)
+        self.drawer = draw(tmax, servers, self._grid)
 
     def draw_nodes(self):
-        data = self._grid
-        for col_k, columm in data.items():
-            for line_k, label in columm.items():
-                if label in self._index:
-                    item = self._index[label]
-                    label = item[3].get('name')
-                self.drawer.draw_app((col_k, line_k), col_k, label)
-        
+        for _, node in self._index.items():
+            self.drawer.draw_app(node)
+
         return self
-    
+
     def draw_connections(self, edges):
         for edge in edges:
-            pos = []
-            w = []
-            
-            for i in range(2):
-                ipos = self._index[edge[i]]
-                pos.append(ipos)
-                w.append(ipos[0])
+            edg = [self._index[edge[x]] for x in range(2)]
 
-            self.drawer.draw_connect(*pos, *w)
-            
+            self.drawer.draw_connect(*edg, edge[2])
+
         return self
-    
+
     def save(self):
         return self.drawer.save()
