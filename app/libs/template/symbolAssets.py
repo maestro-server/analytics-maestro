@@ -1,4 +1,6 @@
 
+import os
+import copy
 from .symbol import Symbol
 from .manageAssets import ManageAssets
 from app.libs.template.loaderTemplates import LoadTemplates
@@ -8,7 +10,8 @@ class SymbolAssets(Symbol):
     def __init__(self, draw, assets=LoadTemplates, manager=ManageAssets):
         super().__init__(draw)
 
-        self._map_assets = assets('/assets/symbol/')
+        cwd = os.getcwd()
+        self._map_assets = assets('%s/assets/symbol/' % cwd)()
         self._manager = manager(self)
 
     def find_assets(self, key, dft='default'):

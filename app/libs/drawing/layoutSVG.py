@@ -25,7 +25,6 @@ class DrawLayout(object):
     def draw_connections(self, edges):
         for edge in edges:
             edg = [self._index[edge[x]] for x in range(2)]
-
             self.drawer.draw_connect(*edg, edge[2])
 
         return self

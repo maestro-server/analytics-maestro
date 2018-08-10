@@ -1,3 +1,7 @@
+
+from .pathFactor import PathFactor
+
+
 class HelperPointerNodeConnector(object):
     def __init__(self, matrix3d, pathFactor=PathFactor):
         self._matrix3d = matrix3d

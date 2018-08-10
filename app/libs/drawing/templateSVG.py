@@ -1,5 +1,15 @@
 
 
+from svgwrite import Drawing
+from .areaSVG import DrawArea
+from .helpers.drawLabel import HelperDrawLabel
+from .helpers.drawTooltips import HelperDrawTooltips
+from .helpers.drawPolilyne import HelperDrawBasePolyline
+from .helpers.drawApplications import HelperDrawApplication
+from .helpers.connector.drawConnector import HelperDrawConnector
+from app.libs.matrix_rotation.matrix3D import Matrix3D
+from app.libs.template.symbolAssets import SymbolAssets
+
 
 class DrawTemplateSVG(object):
     def __init__(self, tmax, servers, grid, darea=DrawArea, symbols=SymbolAssets, m3d=Matrix3D):

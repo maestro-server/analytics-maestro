@@ -15,7 +15,7 @@ def task_network_bussiness(owner_id, data, entries):
     Orchestration.create(entries)
 
     grid = Orchestration.get_grid().get_grid()
-    index = Orchestration.get_grid()._index
+    index = Orchestration.get_grid().get_index()
     edges = network.graph.edges(data='endpoint')
 
     task_enrichment(owner_id, grid, index, edges)

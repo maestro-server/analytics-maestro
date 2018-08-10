@@ -1,3 +1,7 @@
+
+from .cosine import CalCosine
+
+
 class PosMatrix3D(object):
     def __init__(self, size, pos, off):
         self._size = size

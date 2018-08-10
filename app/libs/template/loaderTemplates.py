@@ -1,4 +1,5 @@
 
+import os
 import json
 
 
@@ -13,8 +14,7 @@ class LoadTemplates(object):
         return self._mapp
 
     def crawler(self):
-        for (dirpath, dirnames, filenames) in os.walk(mypath):
-
+        for (dirpath, dirnames, filenames) in os.walk(self._path):
             if filenames:
                 spl = dirpath.split('/')[-1]
                 self.iter_files(spl, filenames)
@@ -30,7 +30,6 @@ class LoadTemplates(object):
         return ''
 
     def iter_files(self, prefix, filenames):
-
         for file in filenames:
             name = '%s%s/%s' % (self._path, prefix, file)
             key = '%s%s' % (self.get_prefix(prefix), self.without_prefix(file))

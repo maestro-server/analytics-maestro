@@ -1,5 +1,5 @@
-import copy
-import math
+
+from app.libs.matrix_rotation.matrixRotation import MatrixRotation
 
 
 class DrawArea(object):
@@ -10,7 +10,7 @@ class DrawArea(object):
         self._max_y = max_y
         self._grid = grid
 
-        self._mrotation = MatrixRotation(self._max_x, size, off)
+        self._mrotation = mrotation(self._max_x, size, off)
 
     def area_x(self):
         menus = self.shw_empty()
