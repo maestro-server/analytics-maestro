@@ -3,24 +3,35 @@ from app.libs.logger import logger
 from flask_restful import Resource
 from app.validate.validate import Validate
 
+from app.tasks.graph_lookup import task_graphlookup
 from app.tasks.entry_query import task_entry
 from app.tasks.notification import task_notification
+from app.libs.helpers.filterTransformation import FilterTransformation
 
 
 class GraphApp(Resource):
     # @api {get} /graph/ Graph Bussiness
     # @apiName GetGraph
     # @apiGroup FGraph
-    def get(self):
+    def post(self):
+
         valid = Validate().validate()
 
         if valid:
-            owner_id=valid['owner_id']
+            owner_id = valid['owner_id']
             type = valid['type']
 
-            entry_id = task_entry(filters=valid['filters'], owner_id=owner_id, typed=type)
+            filterTrans = FilterTransformation()
+            filters = filterTrans.transformation(valid)
+
             try:
-                entry_id = task_entry(filters=valid['filters'], owner_id=owner_id, typed=type)
+                if filterTrans.is_("apps"):
+                    entry_id = task_graphlookup(owner_id=owner_id, entries=filters, typed=type)
+                else:
+                    entry_id = task_entry(filters=filters, owner_id=owner_id, typed=type)
+
+                return entry_id, 201
+
             except Exception as error:
                 task_notification(owner_id=owner_id, msg=str(error), status='error')
                 logger.error(error)

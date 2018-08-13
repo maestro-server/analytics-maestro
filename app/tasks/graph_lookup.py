@@ -1,4 +1,4 @@
-import json
+
 from app import celery
 from app.repository.externalMaestroData import ExternalMaestroData
 
