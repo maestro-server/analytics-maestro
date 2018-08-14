@@ -9,7 +9,7 @@ types = {
 }
 
 @celery.task(name="graphlookup.api")
-def task_graphlookup(owner_id, entries, typed):
+def task_graphlookup(owner_id, graph_id, entries, typed):
     entity = 'applications'
 
     pipeline = [
@@ -47,6 +47,6 @@ def task_graphlookup(owner_id, entries, typed):
 
     ExternalRequest = ExternalMaestroData(owner_id=owner_id)
     items = ExternalRequest.get_aggregation(path="aggregate", entity=entity, pipeline=pipeline)
-    network_id = types[typed](owner_id, items, entries)
+    network_id = types[typed](owner_id, graph_id, items, entries)
 
-    return {'qtd': len(items)}
+    return {'qtd': len(items), 'graph_id': graph_id, 'owner_id': owner_id}

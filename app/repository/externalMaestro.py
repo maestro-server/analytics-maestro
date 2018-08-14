@@ -7,6 +7,7 @@ class ExternalMaestro(object):
     def __init__(self, base, owner_id=None):
         self._base = base
         self._owner_id = owner_id
+        self._headers = {}
 
     def get_uri(self):
         self._base
@@ -31,10 +32,13 @@ class ExternalMaestro(object):
 
     def put_request(self, path, body={}):
         return self.request(path, body, 'put').get_raw()
+
+    def post_request(self, path, body={}):
+        return self.request(path, body, 'post').get_raw()
     
     def request(self, path, query, verb='post'):
         path = "%s/%s" % (self._base, path)
-        MaestroRqt = MaestroRequest()
+        MaestroRqt = MaestroRequest().set_headers(self._headers)
 
         try:
             MaestroRqt.exec_request(path, query, verb)
@@ -43,6 +47,10 @@ class ExternalMaestro(object):
             self.error_handling(task='ExternalMaestro', owner_id=self._owner_id, msg=str(error))
 
         return MaestroRqt
+
+    def set_headers(self, headers):
+        self._headers = headers
+        return self
 
     def error_handling(self, task, owner_id, msg):
         logger.error("Analytics:  [%s] - %s", task, msg)

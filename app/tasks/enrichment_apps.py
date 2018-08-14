@@ -8,7 +8,7 @@ from app.repository.externalMaestroData import ExternalMaestroData
 
 
 @celery.task(name="enrichment.apps")
-def task_enrichment(owner_id, grid, index, edges):
+def task_enrichment(owner_id, graph_id, grid, index, edges):
     
     servers_id = reduce(append_servers, index.values(), [])
     servers_id = list(set(servers_id)) #remove duplicate
@@ -19,9 +19,9 @@ def task_enrichment(owner_id, grid, index, edges):
 
     servers = transform_dict(result)
     
-    task_draw_bussiness(owner_id, grid, index, edges, servers)
+    draw_id = task_draw_bussiness(owner_id, graph_id, grid, index, edges, servers)
 
-    return {'cardials': ""}
+    return {'draw_id': draw_id, 'graph_id': graph_id, 'owner_id': owner_id}
 
 
 

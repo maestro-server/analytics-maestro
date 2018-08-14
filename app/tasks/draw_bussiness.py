@@ -5,7 +5,7 @@ from .send_server_app import task_send_to_server_app
 
 
 @celery.task(name="draw.bussiness")
-def task_draw_bussiness(owner_id, grid, index, edges, servers):
+def task_draw_bussiness(owner_id, graph_id, grid, index, edges, servers):
 
     Layout = DrawLayout(grid, index, servers)
 
@@ -13,6 +13,6 @@ def task_draw_bussiness(owner_id, grid, index, edges, servers):
     Layout.draw_nodes()
     xml = Layout.save()
 
-    send_app_id = task_send_to_server_app(xml)
+    send_app_id = task_send_to_server_app(owner_id, graph_id, xml)
 
-    return {'send_app_id': send_app_id}
+    return {'send_app_id': send_app_id, 'graph_id': graph_id, 'owner_id': owner_id}

@@ -6,7 +6,7 @@ from .enrichment_apps import task_enrichment
 
 
 @celery.task(name="network.bussiness")
-def task_network_bussiness(owner_id, data, entries):
+def task_network_bussiness(owner_id, graph_id, data, entries):
     
     network = BaseNetwork()
     network.make(data).get_graph()
@@ -18,6 +18,6 @@ def task_network_bussiness(owner_id, data, entries):
     index = Orchestration.get_grid().get_index()
     edges = network.graph.edges(data='endpoint')
 
-    task_enrichment(owner_id, grid, index, edges)
+    enrichment_id = task_enrichment(owner_id, graph_id, grid, index, edges)
 
-    return {'cardials': ""}
+    return {'enrichment_id': enrichment_id, 'graph_id': graph_id, 'owner_id': owner_id}

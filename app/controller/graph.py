@@ -20,15 +20,16 @@ class GraphApp(Resource):
         if valid:
             owner_id = valid['owner_id']
             type = valid['type']
+            graph_id = valid['_id']
 
             filterTrans = FilterTransformation()
             filters = filterTrans.transformation(valid)
 
             try:
                 if filterTrans.is_("apps"):
-                    entry_id = task_graphlookup(owner_id=owner_id, entries=filters, typed=type)
+                    entry_id = task_graphlookup(owner_id=owner_id, graph_id=graph_id, entries=filters, typed=type)
                 else:
-                    entry_id = task_entry(filters=filters, owner_id=owner_id, typed=type)
+                    entry_id = task_entry(filters=filters, graph_id=graph_id, owner_id=owner_id, typed=type)
 
                 return entry_id, 201
 

@@ -120,8 +120,7 @@ class DrawTemplateSVG(object):
         self.dwg.add(symbol)
 
     def save(self):
-        self.dwg.save()
-        return self.dwg.get_xml()
+        return self.dwg.tostring()
 
     def draw_connect(self, node1, node2, details={}):
         d = HelperDrawConnector(self._size, self._off, self._matrix3d).connect(node1, node2)
