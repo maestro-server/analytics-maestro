@@ -95,7 +95,8 @@ class Symbol(object):
             'stroke': "black",
             'fill': "none",
             'opacity': 0.8,
-            "marker_end": self.get_symbol('markers.arrow').get_funciri()
+            "marker_end": self.get_symbol('markers.arrow').get_funciri(),
+            'class_': 'conector'
         }
 
         return self.path(d, opts)

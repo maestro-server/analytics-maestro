@@ -21,7 +21,8 @@ class DrawTemplateSVG(object):
 
         self._area = darea(self._off, self._size, tmax[0], tmax[1], grid).area()
 
-        self.dwg = Drawing('test.svg', size=self._area)
+        self.dwg = Drawing('graph.svg', size=self._area, id="graph")
+        self.dwg.viewbox(0, 0, *self._area)
         self._symbols = symbols(self.dwg)
         self._servers = servers
 
@@ -50,8 +51,12 @@ class DrawTemplateSVG(object):
 
         self._symbols.asset_marker('markers.arrow', opts)
 
-    def boundary_box(self, pos):
-        symbol = self._symbols.asset('boundaries_box.front', 'default', (pos[0], pos[1]), self._size)
+    def boundary_box(self, pos, node):
+        opts = {
+            'id': node.get('_id')
+        }
+
+        symbol = self._symbols.asset('boundaries_box.front', 'default boundaries', (pos[0], pos[1]), self._size, opts)
         self.add(symbol)
 
     def draw_label(self, pos, node):
@@ -70,7 +75,7 @@ class DrawTemplateSVG(object):
         self.draw_grid_size(cad1, item[2])
         self.grid_box(pos)
         self.draw_execute(pos, node)
-        self.boundary_box(pos)
+        self.boundary_box(pos, node)
         self.draw_label(pos, node)
         self.draw_tooltips(pos, node)
 
@@ -85,7 +90,7 @@ class DrawTemplateSVG(object):
             self.add(symbol)
 
     def draw_tooltips(self, pos, node):
-        _id = node.get('_id')
+        _id = "tool-" + node.get('_id')
         g = self._symbols.create_group(_id)
 
         hDrawTooltips = HelperDrawTooltips(self._size, self._off)
