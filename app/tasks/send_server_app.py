@@ -1,7 +1,7 @@
 
-import json
 from app.libs.jwt import Jwt
 from app import celery
+from app.libs.logger import logger
 from .notification import task_notification
 from app.repository.externalMaestroAnalyticsFront import ExternalMaestroAnalyticsFront
 
@@ -12,7 +12,7 @@ def task_send_to_server_app(owner_id, graph_id, svg):
         token = Jwt.create_tkn(graph_id, owner_id)
         access = Jwt.encode(token)
     except Exception as error:
-        print(str(error))
+        logger.error(error)
         task_notification(owner_id=owner_id, msg=str(error), status="danger")
 
     headers = {
