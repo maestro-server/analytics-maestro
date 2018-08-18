@@ -8,8 +8,10 @@ class DrawLayout(object):
         self._grid = grid
         self._index = index
 
+        firstcol = min(self._grid, key=int)
+
         self._max_x = max(self._grid, key=int)
-        self._max_y = max(self._grid[0], key=int)
+        self._max_y = max(self._grid[firstcol], key=int)
         self.setup_drawer(draw, servers)
 
     def setup_drawer(self, draw, servers):
