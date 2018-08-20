@@ -7,9 +7,9 @@ from .maestroRequest import MaestroRequest
 
 class ExternalMaestroAnalyticsFront(ExternalMaestro):
     
-    def __init__(self, owner_id):
+    def __init__(self, owner_id, graph_id):
         base = app.config['MAESTRO_ANALYTICS_FRONT_URI']
-        super().__init__(base, owner_id)
+        super().__init__(base, owner_id, graph_id)
 
     def request(self, path, query, verb='post'):
         path = "%s/%s" % (self._base, path)
@@ -19,9 +19,9 @@ class ExternalMaestroAnalyticsFront(ExternalMaestro):
             MaestroRqt.exec_request_data(path, query, verb)
             logger.debug("MaestroRequest External path - %", path)
         except Exception as error:
-            self.error_handling(task='ExternalMaestro', owner_id=self._owner_id, msg=str(error))
+            self.error_handling(task='ExternalMaestro', graph_id=self._graph_id, owner_id=self._owner_id, msg=str(error))
 
         return MaestroRqt
 
-    def error_handling(self, task, owner_id, msg):
-        return notify_error(task, owner_id, msg)
+    def error_handling(self, task, owner_id, graph_id, msg):
+        return notify_error(task, owner_id, graph_id, msg)

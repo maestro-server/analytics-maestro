@@ -70,11 +70,9 @@ class Symbol(object):
             raise Exception("Need to be a list")
 
         atext = self.text("", pos)
-
         for opts in ltxt:
             label = opts.get('text')
             del opts['text']
-
             atext.add(self.tspan(label, opts))
 
         return atext
@@ -97,6 +95,17 @@ class Symbol(object):
             'opacity': 0.8,
             "marker_end": self.get_symbol('markers.arrow').get_funciri(),
             'class_': 'conector'
+        }
+
+        return self.path(d, opts)
+
+    def conn_holder(self, d):
+        opts = {
+            'stroke_width': 18,
+            'stroke': "black",
+            'fill': "none",
+            'opacity': 0,
+            'class_': 'conector_h'
         }
 
         return self.path(d, opts)

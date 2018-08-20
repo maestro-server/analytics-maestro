@@ -13,6 +13,6 @@ def task_draw_bussiness(owner_id, graph_id, grid, index, edges, servers):
     Layout.draw_nodes()
     xml = Layout.save()
 
-    send_app_id = task_send_to_server_app(owner_id, graph_id, xml)
+    send_app_id = task_send_to_server_app.delay(owner_id, graph_id, xml)
 
-    return {'send_app_id': send_app_id, 'graph_id': graph_id, 'owner_id': owner_id}
+    return {'send_app_id': str(send_app_id), 'graph_id': graph_id, 'owner_id': owner_id}

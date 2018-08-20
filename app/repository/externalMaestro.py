@@ -4,9 +4,10 @@ from .maestroRequest import MaestroRequest
 
 class ExternalMaestro(object):
 
-    def __init__(self, base, owner_id=None):
+    def __init__(self, base, owner_id=None, graph_id=None):
         self._base = base
         self._owner_id = owner_id
+        self._graph_id = graph_id
         self._headers = {}
 
     def get_uri(self):
@@ -44,7 +45,7 @@ class ExternalMaestro(object):
             MaestroRqt.exec_request(path, query, verb)
             logger.debug("MaestroRequest External path - %", path)
         except Exception as error:
-            self.error_handling(task='ExternalMaestro', owner_id=self._owner_id, msg=str(error))
+            self.error_handling(task='ExternalMaestro', graph_id=self._graph_id, owner_id=self._owner_id, msg=str(error))
 
         return MaestroRqt
 
@@ -52,5 +53,5 @@ class ExternalMaestro(object):
         self._headers = headers
         return self
 
-    def error_handling(self, task, owner_id, msg):
-        logger.error("Analytics:  [%s] - %s", task, msg)
+    def error_handling(self, task, owner_id, graph_id, msg):
+        logger.error("Analytics:  [%s][%s] - %s", task, graph_id, msg)

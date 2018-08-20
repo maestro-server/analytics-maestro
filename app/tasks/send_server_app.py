@@ -13,13 +13,13 @@ def task_send_to_server_app(owner_id, graph_id, svg):
         access = Jwt.encode(token)
     except Exception as error:
         logger.error(error)
-        task_notification(owner_id=owner_id, msg=str(error), status="danger")
+        task_notification.delay(graph_id=graph_id, owner_id=owner_id, msg=str(error), status="danger")
 
     headers = {
         'Authorization': 'JWT %s' % access.decode("utf-8")
     }
 
-    ExternalRequest = ExternalMaestroAnalyticsFront(owner_id=owner_id)
+    ExternalRequest = ExternalMaestroAnalyticsFront(owner_id=owner_id, graph_id=graph_id)
     ExternalRequest.set_headers(headers)
     result = ExternalRequest.post_request(path="graphs", body={'payload': svg})
 

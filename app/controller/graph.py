@@ -27,18 +27,15 @@ class GraphApp(Resource):
 
             try:
                 if filterTrans.is_("apps"):
-                    entry_id = task_graphlookup(owner_id=owner_id, graph_id=graph_id, entries=filters, typed=type)
+                    entry_id = task_graphlookup.delay(owner_id=owner_id, graph_id=graph_id, entries=filters, typed=type)
                 else:
-                    entry_id = task_entry(filters=filters, graph_id=graph_id, owner_id=owner_id, typed=type)
+                    entry_id = task_entry.delay(filters=filters, graph_id=graph_id, owner_id=owner_id, typed=type)
 
-                return entry_id, 201
+                return str(entry_id), 201
 
             except Exception as error:
-                task_notification(owner_id=owner_id, msg=str(error), status='error')
+                task_notification.delay(graph_id=graph_id, owner_id=owner_id, msg=str(error), status='error')
                 logger.error(error)
                 return {'message': str(error)}, 501
-
-            msg="Graph Bussiness [Entry] - Process - %s" % entry_id
-            task_notification(owner_id=owner_id, msg=msg)
 
         return valid, 502

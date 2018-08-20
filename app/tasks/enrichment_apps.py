@@ -14,14 +14,14 @@ def task_enrichment(owner_id, graph_id, grid, index, edges):
     servers_id = list(set(servers_id)) #remove duplicate
     query = {"_id": servers_id}
 
-    ExternalRequest = ExternalMaestroData(owner_id=owner_id)
+    ExternalRequest = ExternalMaestroData(owner_id=owner_id, graph_id=graph_id)
     result = ExternalRequest.get_request(path="servers", query=query)
 
     servers = transform_dict(result)
     
-    draw_id = task_draw_bussiness(owner_id, graph_id, grid, index, edges, servers)
+    draw_id = task_draw_bussiness.delay(owner_id, graph_id, grid, index, edges, servers)
 
-    return {'draw_id': draw_id, 'graph_id': graph_id, 'owner_id': owner_id}
+    return {'draw_id': str(draw_id), 'graph_id': graph_id, 'owner_id': owner_id}
 
 
 

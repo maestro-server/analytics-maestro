@@ -94,18 +94,11 @@ class DrawTemplateSVG(object):
         g = self._symbols.create_group(_id)
 
         hDrawTooltips = HelperDrawTooltips(self._size, self._off)
-        hDrawTooltips.execute(pos, node)
-
-        background = hDrawTooltips.get_background()
-        symbol = self._symbols.square(*background)
-        g.add(symbol)
-
-        background = hDrawTooltips.get_button()
-        symbol = self._symbols.square(*background)
-        g.add(symbol)
+        hDrawTooltips.execute(node)
 
         ltxt = hDrawTooltips.get_text()
-        symbol = self._symbols.multiline(*ltxt)
+
+        symbol = self._symbols.multiline(ltxt, (0,0))
         g.add(symbol)
 
     def grid_box(self, pos, opts={'fill-opacity': '0.4'}):
@@ -128,7 +121,19 @@ class DrawTemplateSVG(object):
         return self.dwg.tostring()
 
     def draw_connect(self, node1, node2, details={}):
+        id = "%s-%s" % (node1[0], node2[0])
+        g = self._symbols.create_group(id)
+
         d = HelperDrawConnector(self._size, self._off, self._matrix3d).connect(node1, node2)
 
         symbol = self._symbols.conn(d)
-        self.add(symbol)
+        g.add(symbol)
+
+        symbol = self._symbols.conn_holder(d)
+        g.add(symbol)
+
+        symbol = self._symbols.text(details, (0,0), {'display': 'none'})
+        g.add(symbol)
+
+        self.add(g)
+

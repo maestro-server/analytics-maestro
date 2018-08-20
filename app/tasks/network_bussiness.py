@@ -16,8 +16,8 @@ def task_network_bussiness(owner_id, graph_id, data, entries):
 
     grid = Orchestration.get_grid().get_grid()
     index = Orchestration.get_grid().get_index()
-    edges = network.graph.edges(data='endpoint')
+    edges = list(network.graph.edges(data='endpoint'))
 
-    enrichment_id = task_enrichment(owner_id, graph_id, grid, index, edges)
+    enrichment_id = task_enrichment.delay(owner_id, graph_id, grid, index, edges)
 
-    return {'enrichment_id': enrichment_id, 'graph_id': graph_id, 'owner_id': owner_id}
+    return {'enrichment_id': str(enrichment_id), 'graph_id': graph_id, 'owner_id': owner_id}

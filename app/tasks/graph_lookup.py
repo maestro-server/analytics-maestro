@@ -45,8 +45,8 @@ def task_graphlookup(owner_id, graph_id, entries, typed):
             }
     ];
 
-    ExternalRequest = ExternalMaestroData(owner_id=owner_id)
+    ExternalRequest = ExternalMaestroData(owner_id=owner_id, graph_id=graph_id)
     items = ExternalRequest.get_aggregation(path="aggregate", entity=entity, pipeline=pipeline)
-    network_id = types[typed](owner_id, graph_id, items, entries)
+    network_id = types[typed].delay(owner_id, graph_id, items, entries)
 
-    return {'qtd': len(items), 'graph_id': graph_id, 'owner_id': owner_id}
+    return {'qtd': len(items), 'graph_id': graph_id, 'owner_id': owner_id, 'network_id': str(network_id)}

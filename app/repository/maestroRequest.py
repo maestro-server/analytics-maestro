@@ -29,4 +29,5 @@ class MaestroRequest(object):
         raise ClientMaestroError(self.__context.text)
     
     def get_raw(self):
-        return self.__context.text
+        if self.__context:
+            return self.__context.text
