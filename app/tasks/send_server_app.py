@@ -6,7 +6,7 @@ from .notification import task_notification
 from app.repository.externalMaestroAnalyticsFront import ExternalMaestroAnalyticsFront
 
 @celery.task(name="send.server")
-def task_send_to_server_app(owner_id, graph_id, svg):
+def task_send_to_server_app(owner_id, graph_id, payload):
 
     try:
         token = Jwt.create_tkn(graph_id, owner_id)
@@ -21,6 +21,6 @@ def task_send_to_server_app(owner_id, graph_id, svg):
 
     ExternalRequest = ExternalMaestroAnalyticsFront(owner_id=owner_id, graph_id=graph_id)
     ExternalRequest.set_headers(headers)
-    result = ExternalRequest.post_request(path="graphs", body={'payload': svg})
+    result = ExternalRequest.post_request(path="graphs", body=payload)
 
     return {'result': result, 'graph_id': graph_id, 'owner_id': owner_id}
