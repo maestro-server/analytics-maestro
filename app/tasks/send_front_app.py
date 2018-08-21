@@ -2,11 +2,11 @@
 from app.libs.jwt import Jwt
 from app import celery
 from app.libs.logger import logger
-from .notification import task_notification
 from app.repository.externalMaestroAnalyticsFront import ExternalMaestroAnalyticsFront
+from .notification import task_notification
 
 @celery.task(name="send.server")
-def task_send_to_server_app(owner_id, graph_id, payload):
+def task_send_to_front_app(owner_id, graph_id, payload):
 
     try:
         token = Jwt.create_tkn(graph_id, owner_id)

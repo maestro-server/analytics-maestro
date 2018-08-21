@@ -33,5 +33,8 @@ class BaseNetwork(object):
     def get_graph(self):
         return self.graph
 
+    def get_density(self):
+        return nx.density(self.graph)
+
     def clear_duplicate(self):
         self.duplicate = []
