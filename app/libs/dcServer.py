@@ -30,7 +30,7 @@ class DcServers(object):
 
         for svs in servers:
             ss = self._servers.get(svs)
-            itns = DcApps.byServer(ss)
+            itns = DcApps.byServer(ss).capitalize()
             dc.append(itns)
 
         return ', '.join(dc)
