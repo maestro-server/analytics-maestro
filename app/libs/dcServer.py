@@ -33,5 +33,6 @@ class DcServers(object):
             itns = DcApps.byServer(ss).capitalize()
             dc.append(itns)
 
+        dc = set(dc)
         return ', '.join(dc)
 
