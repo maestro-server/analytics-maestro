@@ -20,7 +20,7 @@ def task_network_bussiness(owner_id, graph_id, data, entries):
     edges = list(network.graph.edges(data='endpoint'))
 
     info = {
-        'density': network.get_density(),
+        'density': "{0:.2f}".format(network.get_density()),
         'ledges': len(edges)
     }
 
