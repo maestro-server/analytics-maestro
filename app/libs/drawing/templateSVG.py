@@ -77,7 +77,7 @@ class DrawTemplateSVG(object):
         self.draw_execute(pos, node)
         self.boundary_box(pos, node)
         self.draw_label(pos, node)
-        self.draw_tooltips(pos, node)
+        self.draw_tooltips(node)
 
     def draw_execute(self, pos, node):
         hDrawApp = HelperDrawApplication(self._size, self._servers)
@@ -89,11 +89,11 @@ class DrawTemplateSVG(object):
             symbol = self._symbols.asset(*symb)
             self.add(symbol)
 
-    def draw_tooltips(self, pos, node):
+    def draw_tooltips(self, node):
         _id = "tool-" + node.get('_id')
         g = self._symbols.create_group(_id)
 
-        hDrawTooltips = HelperDrawTooltips(self._size, self._off)
+        hDrawTooltips = HelperDrawTooltips(self._size, self._off, self._servers)
         hDrawTooltips.execute(node)
 
         ltxt = hDrawTooltips.get_text()

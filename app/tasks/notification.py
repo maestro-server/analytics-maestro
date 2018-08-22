@@ -10,7 +10,7 @@ def task_notification(owner_id, graph_id, msg, status='process', more={}):
     merged = {**data, **more}
 
     base = app.config['MAESTRO_DATA_URI']
-    status = ExternalMaestro(base)\
-                            .put_request(path="graphs", body={'body': [merged]})
+    ExternalMaestro(base)\
+                 .put_request(path="graphs", body={'body': [merged]})
 
-    return {'owner_id': owner_id, 'status': status}
+    return {'owner_id': owner_id}

@@ -1,31 +1,10 @@
 
 from collections import Counter
 from app import celery
-from app.libs.transformDict import append_servers
-from app.libs.histograms.grid import GridHistogram
 from .notification import task_notification
-
-class ReduceSystem(object):
-
-    def __init__(self):
-        self._isystem = []
-        self._bags = []
-
-    def push(self, sys):
-
-        if (sys is not None) and isinstance(sys, list):
-            for item in sys:
-                _id = item.get('_id')
-                if _id not in self._isystem:
-                    self._isystem.append(_id)
-                    self._bags.append(item)
-
-    def get_bags(self):
-        return self._bags
-
-    def __len__(self):
-        return len(self.get_bags())
-
+from .network_clients import task_clients_bussiness
+from app.libs.histograms.grid import GridHistogram
+from app.libs.helpers.reduceDict import ReduceDict
 
 def reduceServersinfo(fml):
     if isinstance(fml, list):
@@ -33,11 +12,10 @@ def reduceServersinfo(fml):
 
     return 0
 
-
 @celery.task(name="info.bussiness")
 def task_info_bussiness(owner_id, graph_id, grid, index, info):
 
-    rSystem = ReduceSystem()
+    rSystem = ReduceDict()
     families = []
     servers = 0
 
@@ -54,22 +32,30 @@ def task_info_bussiness(owner_id, graph_id, grid, index, info):
 
     families = dict(Counter(families))
     hist = GridHistogram(grid).get_counter()
+    systems = rSystem.get_bags()
+
 
     data = {
         'info': {
-            'systems': rSystem.get_bags(),
-            'families': families,
             'histograms': hist,
-            'density': info.get('density')
+            'density': info.get('density'),
+            'conections': info.get('ledges')
         },
-        'counters': {
-            'systems': len(rSystem),
-            'servers': servers,
-            'apps': len(index),
-            'conection': info.get('ledges')
+        'isystems': {
+            'items': systems,
+            'total': len(rSystem)
+        },
+        'ifamilies': {
+            'items': families,
+            'total': len(index)
+        },
+        'iservers': {
+            'total': servers
         }
     }
 
     not_id = task_notification.delay(graph_id=graph_id, owner_id=owner_id, msg=None, more=data)
+    if systems:
+        task_clients_bussiness.delay(owner_id, graph_id, systems)
 
     return {'not_id': str(not_id), 'graph_id': graph_id, 'owner_id': owner_id}

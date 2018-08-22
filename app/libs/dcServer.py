@@ -1,16 +1,37 @@
+
+from app.libs.dcApp import DcApps
+
+
 class DcServers(object):
-    allowed = ['aws', 'openstack', 'azure']
 
-    @staticmethod
-    def byServer(server, dft='premise'):
+    def __init__(self, servers=[]):
+        self._servers = servers
+        self.allowed = ['aws', 'openstack', 'azure']
 
-        if 'datacenters' in server:
-            dc = server.get('datacenters')
+    def byServer(self, app, servers=[], dft='premise'):
+
+        if len(servers) > 0:
+            return self.findDC(servers)
+
+        if 'datacenters' in app:
+            dc = app.get('datacenters')
 
             if 'provider' in dc:
                 provider = dc.get('provider').lower()
 
-                if provider in DcServers.allowed:
+                if provider in self.allowed:
                     return provider
 
         return dft
+
+
+    def findDC(self, servers):
+        dc = []
+
+        for svs in servers:
+            ss = self._servers.get(svs)
+            itns = DcApps.byServer(ss)
+            dc.append(itns)
+
+        return ', '.join(dc)
+

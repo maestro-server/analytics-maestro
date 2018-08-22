@@ -2,7 +2,7 @@
 from operator import itemgetter
 from .helperDraw import HelperDraw
 from ..microSingle import MicroCalSingle
-from app.libs.dcServer import DcServers
+from app.libs.dcApp import DcApps
 from app.libs.score.scoreServer import ScoreServer
 from app.libs.matrix_rotation.calGrid.factoryCalGrid import FactoryCalGrid
 
@@ -50,7 +50,7 @@ class HelperDrawApplication(HelperDraw):
         qtd = node.get('qtd', 1)
         catsize = node.get('size', 'medium')
         asset = '%s.%s' % (family, catsize)
-        template = DcServers.byServer(node)
+        template = DcApps.byServer(node)
 
         self._calGrid = FactoryCalGrid.caller(qtd, self._size)
         self.cal_ajust()
@@ -85,7 +85,7 @@ class HelperDrawApplication(HelperDraw):
         asset = server.get('asset')
         score = server.get('score')
 
-        template = DcServers.byServer(server)
+        template = DcApps.byServer(server)
         self.draw_applications(counter, asset, template)
 
     def draw_applications(self, counter, asset, template):
