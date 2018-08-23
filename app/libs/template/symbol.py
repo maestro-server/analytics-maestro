@@ -99,13 +99,13 @@ class Symbol(object):
 
         return self.path(d, opts)
 
-    def conn_holder(self, d):
+    def conn_holder(self, d, id=''):
         opts = {
             'stroke_width': 18,
             'stroke': "black",
             'fill': "none",
             'opacity': 0,
-            'class_': 'conector_h'
+            'class_': 'conector_h' + id
         }
 
         return self.path(d, opts)

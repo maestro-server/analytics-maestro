@@ -31,7 +31,7 @@ def task_info_bussiness(owner_id, graph_id, grid, index, info):
 
 
     families = dict(Counter(families))
-    hist = GridHistogram(grid).get_counter()
+    hist = GridHistogram(index).get_counter()
     systems = rSystem.get_bags()
 
 
