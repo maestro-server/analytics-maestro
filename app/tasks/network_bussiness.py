@@ -27,4 +27,4 @@ def task_network_bussiness(owner_id, graph_id, data, entries):
     enrichment_id = task_enrichment.delay(owner_id, graph_id, grid, index, edges)
     info_id = task_info_bussiness.delay(owner_id, graph_id, grid, index, info)
 
-    return {'enrichment_id': str(enrichment_id), 'info_id': info_id, 'graph_id': graph_id, 'owner_id': owner_id}
+    return {'enrichment_id': str(enrichment_id), 'info_id': str(info_id), 'graph_id': graph_id, 'owner_id': owner_id}
