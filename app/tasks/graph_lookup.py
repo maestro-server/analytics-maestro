@@ -30,6 +30,9 @@ def task_graphlookup(owner_id, graph_id, entries, typed):
                 {
                     'name': 1, 
                     'family': 1,
+                    'environment': 1,
+                    'cluster': 1,
+                    'language': 1,
                     'servers': 1,
                     'deps._id': 1, 
                     'deps.endpoint': 1, 
@@ -38,6 +41,9 @@ def task_graphlookup(owner_id, graph_id, entries, typed):
                     'nodes.name': 1,
                     'nodes.steps': 1,
                     'nodes.family': 1,
+                    'nodes.environment': 1,
+                    'nodes.cluster': 1,
+                    'nodes.language': 1,
                     'nodes.servers': 1,
                     'nodes.system': 1,
                     'nodes.datacenters': 1

@@ -101,11 +101,6 @@ class DrawTemplateSVG(object):
         symbol = self._symbols.multiline(ltxt, (0,0))
         g.add(symbol)
 
-        svs = node.get('servers')
-        if svs:
-            symbol = self._symbols.text((',').join(svs), (0,0), {'class_': 'lservers'})
-            g.add(symbol)
-
     def grid_box(self, pos, opts={'fill-opacity': '0.4'}):
         symbol = self._symbols.asset('grid.base', 'default', pos, self._size, opts)
         self.add(symbol)

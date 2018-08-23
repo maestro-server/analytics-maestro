@@ -20,7 +20,7 @@ class HelperDrawTooltips(HelperDraw):
         servers = self._app.get('servers', [])
         dc = self._dcServers.byServer(self._app, servers)
 
-        props = {k: self._app.get(k, None) for k in ('name', 'provider', 'family', 'environment')}
+        props = {k: self._app.get(k, None) for k in ('name', 'provider', 'family', 'environment', 'language', 'cluster')}
 
         self.make_text('name', props['name'])
 
@@ -28,6 +28,8 @@ class HelperDrawTooltips(HelperDraw):
         self.make_text('env', props['environment'])
         self.make_text('family', props['family'])
         self.make_text('provider', props['provider'])
+        self.make_text('Language', props['language'])
+        self.make_text('Cluster', props['cluster'])
         self.make_text('servers', len(servers))
 
 
