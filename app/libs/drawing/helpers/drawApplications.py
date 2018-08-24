@@ -1,11 +1,9 @@
-
 from operator import itemgetter
 from .helperDraw import HelperDraw
 from ..microSingle import MicroCalSingle
 from app.libs.dcApp import DcApps
 from app.libs.score.scoreServer import ScoreServer
 from app.libs.matrix_rotation.calGrid.factoryCalGrid import FactoryCalGrid
-
 
 class HelperDrawApplication(HelperDraw):
     def __init__(self, size, servers, microCal=MicroCalSingle):
@@ -21,11 +19,32 @@ class HelperDrawApplication(HelperDraw):
 
         super().__init__(size)
 
+        self._pointed = ['application', 'cache']
+
     def execute(self, pos, node):
         self._pos = pos
-        servers = node.get('servers')
-
         family = node.get('family', 'application').lower()
+
+        if family in self._pointed:
+            self.reprv_qtd(node, family)
+        else:
+            self.reprv_family(node, family)
+
+    def reprv_family(self, node, family):
+        self.template_apps(family, node)
+
+    def template_apps(self, family, node):
+        catsize = node.get('size', 'medium')
+        asset = '%s.%s' % (family, catsize)
+        template = DcApps.byApps(node, self._servers)
+
+        self._calGrid = FactoryCalGrid.zero(self._size)
+        self.cal_ajust()
+        self.draw_applications(0, asset, template)
+
+
+    def reprv_qtd(self, node, family):
+        servers = node.get('servers')
 
         if servers:
             self.template_with_servers(servers, family)
@@ -71,8 +90,8 @@ class HelperDrawApplication(HelperDraw):
                 score = ScoreServer.make_score(cpu, memory)
 
                 ss = {k: details.get(k, None) for k in (
-                'hostname', 'ipv4_private', 'ipv4_public', 'datacenters', 'services', 'storage', 'cpu', 'memory',
-                'environment', 'role', 'os')}
+                    'hostname', 'ipv4_private', 'ipv4_public', 'datacenters', 'services', 'storage', 'cpu', 'memory',
+                    'environment', 'role', 'os')}
                 ss['asset'] = '%s.%s' % (family, ScoreServer.val_score(score))
                 ss['score'] = score
 

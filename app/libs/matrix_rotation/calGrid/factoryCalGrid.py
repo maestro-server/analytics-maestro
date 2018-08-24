@@ -3,9 +3,14 @@ import math
 from .calGridOne import CalGridOne
 from .calGridFourth import CalGridFourth
 from .calGridNineth import CalGridNineth
+from .calGridZero import CalGridZero
 
 
 class FactoryCalGrid(object):
+    @staticmethod
+    def zero(size):
+        return CalGridZero(size)
+
     @staticmethod
     def caller(qtd, size):
         gsize = FactoryCalGrid.grid_size(qtd)

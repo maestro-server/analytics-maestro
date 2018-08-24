@@ -16,3 +16,13 @@ class DcApps(object):
                         return provider
 
         return dft
+
+    @staticmethod
+    def byApps(node, lservers):
+        obj = node
+        servers = node.get('servers', [])
+
+        if len(servers) > 0:
+            obj = lservers.get(servers[0])
+
+        return DcApps.byServer(obj)

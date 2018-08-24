@@ -15,9 +15,6 @@ class CalGrid(object):
 
     def node_size(self):
         prop = self._gsize
-
-        if prop == 1:
-            prop += 1
         return (self._size[0] / prop, self._size[1] / prop)
 
     def get_size(self):
