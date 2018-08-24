@@ -31,6 +31,7 @@ class GraphApp(Resource):
                 else:
                     entry_id = task_entry.delay(filters=filters, graph_id=graph_id, owner_id=owner_id, typed=type)
 
+                logger.info(entry_id);
                 return str(entry_id), 201
 
             except Exception as error:
