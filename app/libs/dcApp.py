@@ -1,5 +1,5 @@
 class DcApps(object):
-    allowed = ['aws', 'openstack', 'azure']
+    allowed = ['aws', 'openstack', 'azure', 'google-cloudengine', 'digital-ocean', 'linode', 'rackspace', 'heroku', 'ovh', 'godaddy']
 
     @staticmethod
     def byServer(server, dft='premise'):
@@ -26,3 +26,5 @@ class DcApps(object):
             obj = lservers.get(servers[0])
 
         return DcApps.byServer(obj)
+
+
