@@ -14,7 +14,6 @@ class ManageStyle(object):
         if template not in self._used_styles:
             tpl = self.get_template(template)
             self.attach_style(tpl)
-
             self._used_styles.append(template)
 
     def get_template(self, name, dft='default'):

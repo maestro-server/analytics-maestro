@@ -42,8 +42,7 @@ class SymbolAssets(Symbol):
 
             self.set_proportion(asset, (viewbox[2], viewbox[3]))
 
-            self._manager_style.stylish(template)
-
+        self._manager_style.stylish(template)
         opts['size'] = size
 
         if template:
