@@ -67,8 +67,11 @@ class HelperDrawApplication(HelperDraw):
 
     def template_without_servers(self, family, node):
         qtd = node.get('qtd', 1)
-        catsize = node.get('size', 'medium')
-        asset = '%s.%s' % (family, catsize)
+        catsize = node.get('size', 2)
+        score = ScoreServer.make_score(qtd, catsize)
+        size = ScoreServer.val_score(score)
+
+        asset = '%s.%s' % (family, size)
         template = DcApps.byServer(node)
 
         self._calGrid = FactoryCalGrid.caller(qtd, self._size)
@@ -102,7 +105,6 @@ class HelperDrawApplication(HelperDraw):
 
     def single_server(self, counter, server):
         asset = server.get('asset')
-        score = server.get('score')
 
         template = DcApps.byServer(server)
         self.draw_applications(counter, asset, template)
