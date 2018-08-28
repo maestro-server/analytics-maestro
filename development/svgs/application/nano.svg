@@ -1,13 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 266.4 199.47">
     <defs>
         <style>
-            .a{
-            fill:#c4692c; dark
-            }
-            .b{fill:#f58536; ligh
-            }
-
-            .c{fill:#a0501a;} darker
+            .a{fill:#c4692c;}
+            .b{fill:#f58536;}
+            .c{fill:#a0501a;}
+            .d{fill:#fff;}
             </style>
     </defs>
     <title>Asset 39</title>

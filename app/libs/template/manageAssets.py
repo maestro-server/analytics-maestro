@@ -7,7 +7,7 @@ class ManageAssets(object):
         self._symbol_assets = symbol
         self._creator = creator
 
-    def polyline(self, opt={}):
+    def polygon(self, opt={}):
         return self._symbol_assets.dwg.polygon(**opt)
 
     def path(self, opts):
