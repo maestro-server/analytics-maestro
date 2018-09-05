@@ -43,7 +43,7 @@ class ExternalMaestro(object):
 
         try:
             MaestroRqt.exec_request(path, query, verb)
-            logger.debug("MaestroRequest External path - %", path)
+            logger.debug("MaestroRequest External path - %s", path)
         except Exception as error:
             self.error_handling(task='ExternalMaestro', graph_id=self._graph_id, owner_id=self._owner_id, msg=str(error))
 
