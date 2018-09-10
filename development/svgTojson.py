@@ -113,7 +113,9 @@ class Crawler(object):
 
     def iter_files(self, prefix, filenames):
         for file in filenames:
-            self.create_file(prefix, file)
+            rr = re.search(r'(.*)\.svg', file)
+            if rr:
+                self.create_file(prefix, file)
 
     def create_file(self, prefix, filenames):
 
