@@ -34,6 +34,7 @@ def task_graphlookup(owner_id, graph_id, entries, typed):
                     'cluster': 1,
                     'language': 1,
                     'servers': 1,
+                    'datacenters': 1,
                     'deps._id': 1, 
                     'deps.endpoint': 1, 
                     'nodes._id': 1, 
