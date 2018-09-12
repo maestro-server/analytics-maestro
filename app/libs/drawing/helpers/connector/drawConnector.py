@@ -31,7 +31,7 @@ class HelperDrawConnector(HelperDraw):
             self.first_step(fpos, spos, fsize, ssize, diffs)
 
         if self._hconnector.is_double_down():
-            self.second_step(fpos, fsize, diffs)
+            self.second_step(fpos, diffs)
 
         if self._hconnector.is_up():
             self.revert_step(fpos, fsize, diffs)
@@ -47,7 +47,7 @@ class HelperDrawConnector(HelperDraw):
         else:
             self._hpointer.point_mid_front(fpos, fsize)
 
-    def second_step(self, fpos, fsize, diffs):
+    def second_step(self, fpos, diffs):
         cx = fpos[0] + 1
         cy = fpos[1]
 
@@ -62,15 +62,15 @@ class HelperDrawConnector(HelperDraw):
                 m = self.sizes(10, 40)
 
                 self._hpointer.point_start_front(fpos, 1, m)
-                self._hpointer.node_start_front((fpos[0] + diffs[0], fpos[1]), fsize, m)
+                self._hpointer.node_start_front((fpos[0] + diffs[0], fpos[1]), 1, m)
 
     def revert_step(self, fpos, fsize, diffs):
         m = self.sizes(12, 40)
 
         if diffs[1] <= 0:
-            self._hpointer.point_start_front(fpos, 1, m)
+            self._hpointer.point_start_front(fpos, 1)
         else:
-            self._hpointer.point_end_front(fpos, 1, m)
+            self._hpointer.point_end_front(fpos, fsize)
 
         self._hpointer.point_start_front((fpos[0], fpos[1] + diffs[1]), 1, m)
         self._hpointer.point_start_front((fpos[0] + diffs[0], fpos[1] + diffs[1]), 1, m)
