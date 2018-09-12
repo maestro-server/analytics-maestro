@@ -26,7 +26,10 @@ class ConvertXMLtoJsonSVG(object):
             '000': 'black',
             'ccc': 'lgray',
             '6d6d6d': 'gray2',
-            '3a3a3a': 'dark-gray'
+            '3a3a3a': 'dark-gray',
+            '757575': 'dark-gray2',
+            'efefef': 'little-white',
+            'f2f2f2': 'light-gray'
         }
 
     def run(self, xml):
