@@ -15,8 +15,7 @@ def task_network_bussiness(owner_id, graph_id, data, entries):
     Orchestration = GridOrchestrator(network.graph)
     Orchestration.create(entries)
 
-    grid = Orchestration.get_grid().get_grid()
-    index = Orchestration.get_grid().get_index()
+    grid, index = Orchestration.get_mapping()
     edges = list(network.graph.edges(data='endpoint'))
 
     info = {

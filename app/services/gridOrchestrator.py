@@ -3,6 +3,7 @@ from app.libs.patterns.iterator import IteratorMasterPattern
 from app.libs.helpers.attributes import HelperDefineAttributes
 from app.libs.helpers.setupWeight import HelperSetupWeight
 from app.libs.helpers.orderedSucces import HelperOrderedSuccers
+from app.libs.helpers.clearEmptyLines import HelperClearEmptyLines
 
 
 class GridOrchestrator(object):
@@ -10,8 +11,10 @@ class GridOrchestrator(object):
         self._graph = G
         self._grid = GMap()
 
-    def get_grid(self):
-        return self._grid
+    def get_mapping(self):
+        grid = self._grid.get_grid()
+        index = self._grid.get_index()
+        return HelperClearEmptyLines().run(grid, index)
 
     def create(self, entries, SHelper=HelperSetupWeight):
         SHelper(self._graph).setup()
