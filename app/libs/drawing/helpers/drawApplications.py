@@ -35,6 +35,7 @@ class HelperDrawApplication(HelperDraw):
 
     def template_apps(self, family, node):
         catsize = node.get('size', 'medium')
+
         asset = '%s.%s' % (family, catsize)
         template = DcApps.byApps(node, self._servers)
 
