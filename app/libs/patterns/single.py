@@ -4,6 +4,8 @@ class SinglePattern(object):
 
         attr = self._helper.get_attrs()
         size = self.grow_node(start_y + 1)
+        attr['root'] = self._helper.get_node_attr('root')
+
         self._grid.create_position((self._step, start_y), self._helper.get_id(), size, attr)
 
     def grow_node(self, start_y):

@@ -12,13 +12,12 @@ class HelperClearEmptyLines(object):
         return self._swfgrid, self._swfindex
 
     def cleanning(self, grid):
-
         for row in grid:
             empty = True
 
             for line in grid[row]:
-
-                if (self._dmark != grid[row][line][0]):
+                m = grid[row][line][0]
+                if (self._dmark != m):
                     empty = False
                     self.addSwf(row, grid[row])
                     break;
@@ -41,4 +40,5 @@ class HelperClearEmptyLines(object):
             if (self._dmark != uid[0]):
                 node = self._swfindex[uid]
                 swft = node[0] - qtd
+
                 self._swfindex[uid] = (swft, node[1], node[2], node[3])

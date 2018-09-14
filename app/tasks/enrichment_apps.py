@@ -22,6 +22,3 @@ def task_enrichment(owner_id, graph_id, grid, index, edges):
     draw_id = task_draw_bussiness.delay(owner_id, graph_id, grid, index, edges, servers)
 
     return {'draw_id': str(draw_id), 'graph_id': graph_id, 'owner_id': owner_id}
-
-
-
