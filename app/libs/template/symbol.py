@@ -87,6 +87,10 @@ class Symbol(object):
     def path(self, d, opts):
         return self.dwg.path(d, **opts)
 
+    def ellipse(self, cx, cy, rx, ry, class_):
+        opts = {'class_': class_}
+        return self.dwg.ellipse(center=(cx,cy), r=(rx, ry), **opts)
+
     def conn(self, d):
         opts = {
             'stroke_width': "1",

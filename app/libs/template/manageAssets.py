@@ -13,6 +13,14 @@ class ManageAssets(object):
     def path(self, opts):
         return self._symbol_assets.dwg.path(**opts)
 
+    def ellipse(self, args):
+        opts = {
+            'center': (args.get('cx'), args.get('cy')),
+            'r': (args.get('rx'), args.get('ry')),
+            'class_': args.get('class_')
+        }
+        return self._symbol_assets.dwg.ellipse(**opts)
+
     def create(self, configs):
         objs = []
         items = configs.get('els')

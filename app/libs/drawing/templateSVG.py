@@ -72,6 +72,7 @@ class DrawTemplateSVG(object):
 
         pos = self._matrix3d.rotateNodeXY(item)()
 
+        self.draw_root(item)
         self.draw_grid_size(cad1, item[2])
         self.grid_box(pos)
         self.draw_execute(pos, node)
@@ -113,6 +114,17 @@ class DrawTemplateSVG(object):
 
         symbol = self._symbols.polyline(points, {'fill': '#ccc', 'fill-opacity': 0.2})
         self.add(symbol)
+
+    def draw_root(self, item):
+        root = item[3].get('root')
+        if root:
+            nitem = (item[0] - 1, item[1], item[2], item[3])
+            pos = self._matrix3d.rotateNodeXY(nitem)()
+
+            symbol = self._symbols.asset('grid.entry', 'default', pos, self._size)
+
+            self.draw_connect(nitem, item)
+            self.add(symbol)
 
     def add(self, symbol):
         self.dwg.add(symbol)
