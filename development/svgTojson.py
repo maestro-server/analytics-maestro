@@ -10,7 +10,7 @@ class ConvertXMLtoJsonSVG(object):
 
     def __init__(self):
         self._els = []
-        self.allowed = ['polygon', 'path', 'polyline']
+        self.allowed = ['polygon', 'path', 'polyline', 'ellipse', 'circle', 'rect']
 
         self._crelation = {}
 
@@ -31,7 +31,8 @@ class ConvertXMLtoJsonSVG(object):
             'efefef': 'little-white',
             'f2f2f2': 'light-gray',
             '212121': 'light-black',
-            '1e1e1e': 'light-black'
+            '1e1e1e': 'light-black',
+            'eaeaea': 'bg-gray'
         }
 
     def run(self, xml):
