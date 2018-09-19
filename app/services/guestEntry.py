@@ -19,6 +19,7 @@ class GuestEntry(object):
 
         for key, item in enumerate(self._items):
             family = item.get('family')
+
             if family not in self.hierarch[cutover-self.max:cutover]:
                 break
 

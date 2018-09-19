@@ -32,7 +32,10 @@ class ConvertXMLtoJsonSVG(object):
             'f2f2f2': 'light-gray',
             '212121': 'light-black',
             '1e1e1e': 'light-black',
-            'eaeaea': 'bg-gray'
+            'eaeaea': 'bg-gray',
+            'ecba16': 'yellow',
+            'c69710': 'dark-yellow',
+            'strblack': 'strblack'
         }
 
     def run(self, xml):
@@ -50,10 +53,11 @@ class ConvertXMLtoJsonSVG(object):
         return self._els
 
     def create_el(self, name, el):
-        cls = el.pop('class')
-        ncls = self.get_rel(cls)
-        if ncls:
-            el['class_'] = ncls
+        if 'class' in el:
+            cls = el.pop('class')
+            ncls = self.get_rel(cls)
+            if ncls:
+                el['class_'] = ncls
 
         return {
             "args": el,
@@ -82,6 +86,11 @@ class ConvertXMLtoJsonSVG(object):
                 a = rr.group(1)
                 b = rr.group(2)
                 self._crelation[a] = b
+
+            rr2 = re.search(r'\.(.*){fill:none;stroke:#000;stroke-miterlimit:10;', cc.strip())
+            if rr2:
+                a = rr2.group(1)
+                self._crelation[a] = "strblack"
 
 
 class XMLGetViewBox(object):
