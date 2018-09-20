@@ -36,6 +36,7 @@ class HelperDrawApplication(HelperDraw):
     def template_apps(self, family, node):
         catsize = node.get('size', 'medium')
 
+        family = self.slug(family)
         asset = '%s.%s' % (family, catsize)
         template = DcApps.byApps(node, self._servers)
 
@@ -67,11 +68,14 @@ class HelperDrawApplication(HelperDraw):
                 self.single_server(*serv)
 
     def template_without_servers(self, family, node):
-        qtd = node.get('qtd', 1)
-        catsize = node.get('size', 2)
-        score = ScoreServer.make_score(qtd, catsize)
-        size = ScoreServer.val_score(score)
+        size = node.get('size')
 
+        if size:
+            qtd = node.get('qtd', 1)
+            score = ScoreServer.make_score(qtd, qtd)
+            size = ScoreServer.val_score(score)
+
+        family = self.slug(family)
         asset = '%s.%s' % (family, size)
         template = DcApps.byServer(node)
 
@@ -96,6 +100,8 @@ class HelperDrawApplication(HelperDraw):
                 ss = {k: details.get(k, None) for k in (
                     'hostname', 'ipv4_private', 'ipv4_public', 'datacenters', 'services', 'storage', 'cpu', 'memory',
                     'environment', 'role', 'os')}
+
+                family = self.slug(family)
                 ss['asset'] = '%s.%s' % (family, ScoreServer.val_score(score))
                 ss['score'] = score
 
@@ -132,3 +138,6 @@ class HelperDrawApplication(HelperDraw):
 
     def get_apps(self):
         return self._apps
+
+    def slug(self, str):
+        return str.replace("/", '')

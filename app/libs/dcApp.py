@@ -26,5 +26,3 @@ class DcApps(object):
             obj = lservers.get(servers[0])
 
         return DcApps.byServer(obj)
-
-

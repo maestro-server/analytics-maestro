@@ -14,9 +14,18 @@ class SymbolAssets(Symbol):
         self._map_assets = assets(path % cwd)()
         self._manager = manager(self)
 
-    def find_assets(self, key, dft='default'):
+    def default_family(self, family, dft='default'):
+        fl = family.split('.')
+        key = "%s.%s" % (fl[0], 'medium')
+
         if key not in self._map_assets:
             key = dft
+
+        return key
+
+    def find_assets(self, key):
+        if key not in self._map_assets:
+            key = self.default_family(key)
 
         return key
 
