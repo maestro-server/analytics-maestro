@@ -36,12 +36,15 @@ class Root(object):
         return self
     
     def fill_gaps_root(self, requester):
-        entries = self.crawler(self.__bag_fallen, requester)\
-                        .find_apps()\
-                        .get_entries()
 
-        entries = self.map_reduce(entries)
-        self.push_bag(entries)
+        if len(self.__bag_fallen) > 0:
+            entries = self.crawler(self.__bag_fallen, requester)\
+                            .find_apps()\
+                            .get_entries()
+
+            entries = self.map_reduce(entries)
+            self.push_bag(entries)
+
         return self
 
     def get_roots_id(self):

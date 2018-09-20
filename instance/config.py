@@ -22,6 +22,8 @@ class Config(object):
     MAESTRO_ANALYTICS_FRONT_URI = os.environ.get("MAESTRO_ANALYTICS_FRONT_URI", "http://localhost:9999")
     CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", 'amqp://localhost')
     CELERY_DEFAULT_QUEUE = 'analytics'
+    CELERYD_TASK_SOFT_TIME_LIMIT = 1080
+    CELERYD_MAX_TASKS_PER_CHILD = 1
 
 class ProductionConfig(Config):
     pass

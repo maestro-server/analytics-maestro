@@ -1,1 +1,1 @@
-{"els": [{"args": {"points": "133.2 0 0 78.16 133.2 156.32 266.4 78.16", "class_": "gdarker"}, "shape": "polygon"}], "viewBox": [0.0, 0.0, 266.4, 156.32]}
+{"viewBox": [0.0, 0.0, 266.4, 156.32], "els": [{"args": {"points": "133.2 0 0 78.16 133.2 156.32 266.4 78.16", "class_": "gdarker"}, "shape": "polygon"}]}

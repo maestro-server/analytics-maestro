@@ -17,13 +17,15 @@ class GuestEntry(object):
         idx = self.hierarch.index(cutitem) + 1
         cutover = self.multiple(idx)
 
-        for key, item in enumerate(self._items):
+        key = 0
+        for item in self._items:
             family = item.get('family')
-
             if family not in self.hierarch[cutover-self.max:cutover]:
                 break
 
-        self._items = self._items[:key-1]
+            key += 1
+
+        self._items = self._items[:key]
 
         return self._items
     

@@ -17,6 +17,8 @@ def task_entry(owner_id, graph_id, typed, filters={}):
                 .fill_gaps_root(ExternalRequest)\
                 .get_roots_id()
 
-    lookup_id = task_graphlookup.delay(owner_id, graph_id, entries, typed)
+    lookup_id = None
+    if len(entries) > 0:
+        lookup_id = task_graphlookup.delay(owner_id, graph_id, entries, typed)
 
     return {'entries': entries, 'graph_id': graph_id, 'owner_id': owner_id, 'lookup_id': lookup_id}
