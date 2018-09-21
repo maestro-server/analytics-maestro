@@ -11,6 +11,7 @@ ENV APP_PATH=/opt/application
 WORKDIR $APP_PATH
 
 COPY ./app $APP_PATH/app
+COPY ./assets $APP_PATH/assets
 COPY ./instance $APP_PATH/instance
 COPY requirements.txt requirements.txt
 COPY package.json package.json
