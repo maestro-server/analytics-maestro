@@ -7,7 +7,7 @@ jobs:
   include:
     - stage: unit test
       script:
-      - python -m unittest discover -s app/tests
+      - python -m unittest discover
 
     - stage: coverage
       script:
@@ -26,6 +26,15 @@ jobs:
         - docker tag $REPO_FLASK $DOCKER_USER/$REPO_FLASK:$TRAVIS_BRANCH
         - docker push $DOCKER_USER/$REPO_FLASK:$TRAVIS_BRANCH
 
+    - stage: build docker image - celery (base)
+      if: branch != master
+      script:
+        - docker build -f DockerfileCelery -t $REPO_CELERY .
+      after_success:
+        - docker login -u $DOCKER_USER -p $DOCKER_PASS
+        - docker tag $REPO_CELERY $DOCKER_USER/$REPO_CELERY:$TRAVIS_BRANCH
+        - docker push $DOCKER_USER/$REPO_CELERY:$TRAVIS_BRANCH
+
     - stage: build docker image - flask (latest)
       if: branch = master
       script:
@@ -34,3 +43,12 @@ jobs:
         - docker login -u $DOCKER_USER -p $DOCKER_PASS
         - docker tag $REPO_FLASK $DOCKER_USER/$REPO_FLASK:latest
         - docker push $DOCKER_USER/$REPO_FLASK:latest
+
+    - stage: build docker image - celery (latest)
+      if: branch = master
+      script:
+        - docker build -f DockerfileCelery -t $REPO_CELERY .
+      after_success:
+        - docker login -u $DOCKER_USER -p $DOCKER_PASS
+        - docker tag $REPO_CELERY $DOCKER_USER/$REPO_CELERY:latest
+        - docker push $DOCKER_USER/$REPO_CELERY:latest
