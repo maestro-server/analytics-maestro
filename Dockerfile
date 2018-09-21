@@ -1,4 +1,4 @@
-FROM maestroserver/maestro-pandas
+FROM maestroserver/maestro-python-gcc
 MAINTAINER Felipe Signorini <felipe.signorini@maestroserver.io>
 
 COPY docker-entrypoint.sh /usr/local/bin/

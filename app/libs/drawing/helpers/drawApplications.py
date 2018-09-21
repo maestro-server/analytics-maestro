@@ -69,9 +69,9 @@ class HelperDrawApplication(HelperDraw):
 
     def template_without_servers(self, family, node):
         size = node.get('size')
+        qtd = node.get('qtd', 1)
 
-        if size:
-            qtd = node.get('qtd', 1)
+        if size == None:
             score = ScoreServer.make_score(qtd, qtd)
             size = ScoreServer.val_score(score)
 
