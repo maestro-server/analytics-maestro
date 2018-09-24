@@ -23,15 +23,17 @@ class Config(object):
     CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", 'amqp://localhost')
     CELERY_DEFAULT_QUEUE = 'analytics'
     CELERYD_TASK_SOFT_TIME_LIMIT = 1080
-    CELERYD_MAX_TASKS_PER_CHILD = 1
+    
 
 class ProductionConfig(Config):
     pass
 
 
 class DevelopmentConfig(Config):
+    CELERYD_MAX_TASKS_PER_CHILD = 1
     DEBUG = True
 
 
 class TestingConfig(Config):
+    CELERYD_MAX_TASKS_PER_CHILD = 1
     TESTING = True
