@@ -10,5 +10,5 @@ mapping_style = {
     'heroku': '.heroku{color: #473C8B;fill: #6053b5;}',
     'ovh': '.ovh{color: #0B4571;fill: #155d91;}',
     'godaddy': '.godaddy{color: #02C54A;fill: #18db5f;}',
-    'default': '.dark{fill: currentColor;}.darker{filter: url(#brightness)}.2darker{filter: url(#darker)}text{font-family:Arial, Helvetica, sans-serif; fill: #672064;}.white{fill:#fff;}.gray{fill:#d1d1d1;}.gdarker{fill:#bababa}.black{fill:#000}.lgray{fill:#ccc},.gray2{fill:#6d6d6d}.dark-gray2{fill:#757575}.little-white{fill:#efefef}.light-gray{fill:#f2f2f2;}.light-black{fill:#212121;}.bg-gray{fill:#eaeaea;}.yellow{fill:#ecba16;}.dark-yellow{fill:#c69710;}.strblack{fill:none;stroke:#000;stroke-miterlimit:10;}'
+    'default': '.dark{fill: currentColor;}.darker{filter: url(#brightness)}.2darker{filter: url(#darker)}text{font-family:Arial, Helvetica, sans-serif; fill: #672064;}.white{fill:#fff;}.gray{fill:#d1d1d1;}.gdarker{fill:#bababa}.black{fill:#000}.lgray{fill:#ccc},.gray2{fill:#6d6d6d}.dark-gray2{fill:#757575}.little-white{fill:#efefef}.light-gray{fill:#f2f2f2;}.light-black{fill:#212121;}.bg-gray{fill:#fbfbfb;}.yellow{fill:#ecba16;}.dark-yellow{fill:#c69710;}.strblack{fill:none;stroke:#000;stroke-miterlimit:10;}'
 }

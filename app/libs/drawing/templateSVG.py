@@ -34,7 +34,7 @@ class DrawTemplateSVG(object):
         self.setup_marker()
 
     def setup_background(self):
-        symbol = self._symbols.square((0, 0), size=self._area, opts={'fill': "#eaeaea"})
+        symbol = self._symbols.square((0, 0), size=self._area, opts={'fill': "#fbfbfb"})
         self.add(symbol)
 
     def setup_brightness(self):
