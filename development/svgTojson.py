@@ -32,7 +32,7 @@ class ConvertXMLtoJsonSVG(object):
             'f2f2f2': 'light-gray',
             '212121': 'light-black',
             '1e1e1e': 'light-black',
-            'eaeaea': 'bg-gray',
+            'fbfbfb': 'bg-gray',
             'ecba16': 'yellow',
             'c69710': 'dark-yellow',
             'strblack': 'strblack'
