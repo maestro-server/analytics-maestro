@@ -7,7 +7,7 @@ from app.repository.externalMaestro import ExternalMaestro
 def task_notification(owner_id, graph_id, msg, status, more):
 
     data = {'_id': graph_id}
-    
+
     if status:
         data['status'] = status
 
