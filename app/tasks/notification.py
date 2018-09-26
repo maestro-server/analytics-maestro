@@ -4,9 +4,17 @@ from app import celery
 from app.repository.externalMaestro import ExternalMaestro
 
 @celery.task(name="notification.api")
-def task_notification(owner_id, graph_id, msg, status='process', more={}):
+def task_notification(owner_id, graph_id, msg, status, more):
 
-    data = {'_id': graph_id, 'status': status, 'msg': msg}
+    data = {'_id': graph_id}
+    
+    if status:
+        data['status'] = status
+
+    if msg:
+        data['more'] = more
+
+
     merged = {**data, **more}
 
     base = app.config['MAESTRO_DATA_URI']
