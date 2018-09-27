@@ -15,7 +15,7 @@ class Config(object):
     TESTING = os.environ.get("TESTING", False)
     RESTFUL_JSON = {'cls': DateTimeEncoder}
 
-    SECRETJWT = os.environ.get("MAESTRO_SECRETJWT", "defaultSecretKey")
+    SECRETJWT = os.environ.get("MAESTRO_SECRETJWT_ANALYTICS", "defaultSecretKey")
     NOAUTH = os.environ.get("MAESTRO_NOAUTH", "defaultSecretNoAuthToken")
 
     MAESTRO_DATA_URI = os.environ.get("MAESTRO_DATA_URI", "http://localhost:5010")
