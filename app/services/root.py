@@ -1,7 +1,7 @@
 
 from .crawler import Crawler
 from app.libs.logger import logger
-from app.libs.notifyError import notify_error
+from app.repository.libs.notifyError import notify_error
 from app.error.clientMaestroError import ClientMaestroError
 
 

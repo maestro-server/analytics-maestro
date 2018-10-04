@@ -16,7 +16,10 @@ class Crawler(object):
             'system._id': self.__bag_systems
         }
 
-        items = self._requester.get_request(path="applications", query=systems)
+        items = self._requester\
+                    .list_request(path="applications", query=systems)\
+                    .get_results('items')
+
 
         if isinstance(items, (list, tuple)) and len(items) > 0:
             self.__bag_ids = self.__guest(items).get_entries()

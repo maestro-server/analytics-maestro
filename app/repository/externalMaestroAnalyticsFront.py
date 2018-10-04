@@ -2,26 +2,19 @@
 from app.views import app
 from app.libs.logger import logger
 from .externalMaestro import ExternalMaestro
-from app.libs.notifyError import notify_error
-from .maestroRequest import MaestroRequest
+from app.repository.libs.notifyError import notify_error
 
 class ExternalMaestroAnalyticsFront(ExternalMaestro):
-    
-    def __init__(self, owner_id, graph_id):
+
+    def __init__(self, entity_id=None):
         base = app.config['MAESTRO_ANALYTICS_FRONT_URI']
-        super().__init__(base, owner_id, graph_id)
+        self.ent_id = entity_id
 
-    def request(self, path, query, verb='post'):
-        path = "%s/%s" % (self._base, path)
-        MaestroRqt = MaestroRequest().set_headers(self._headers)
+        super().__init__(base, 'data')
 
-        try:
-            MaestroRqt.exec_request_data(path, query, verb)
-            logger.debug("MaestroRequest External path - %", path)
-        except Exception as error:
-            self.error_handling(task='ExternalMaestro', graph_id=self._graph_id, owner_id=self._owner_id, msg=str(error))
+    def error_handling(self, task, msg):
+    
+        if self.ent_id :
+            return notify_error(task=task, msg=msg, conn_id=self.ent_id)
 
-        return MaestroRqt
-
-    def error_handling(self, task, owner_id, graph_id, msg):
-        return notify_error(task, owner_id, graph_id, msg)
+        logger.error("MaestroData:  [%s] - %s", task, msg)

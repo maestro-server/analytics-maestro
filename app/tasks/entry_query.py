@@ -1,7 +1,7 @@
 
 from app import celery
 from app.services.root import Root
-from app.repository.externalMaestroData import ExternalMaestroData
+from app.repository.externalMaestroOwneredData import ExternalMaestroOwneredData
 
 from .graph_lookup import task_graphlookup
 
@@ -9,12 +9,13 @@ from .graph_lookup import task_graphlookup
 @celery.task(name="entry.api")
 def task_entry(owner_id, graph_id, typed, filters={}):
 
-    ExternalRequest = ExternalMaestroData(owner_id=owner_id, graph_id=graph_id)
-    items = ExternalRequest.get_request(path="systems", query=filters)
+    items = ExternalMaestroOwneredData(graph_id, owner_id)\
+                    .list_request(path="systems", query=filters)\
+                    .get_results('items')
 
     entries = Root(items, owner_id)\
                 .validate_roots()\
-                .fill_gaps_root(ExternalRequest)\
+                .fill_gaps_root(ExternalMaestroOwneredData)\
                 .get_roots_id()
 
     lookup_id = None

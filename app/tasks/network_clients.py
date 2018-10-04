@@ -2,7 +2,7 @@
 from app import celery
 from .notification import task_notification
 from app.libs.helpers.reduceDict import ReduceDict
-from app.repository.externalMaestroData import ExternalMaestroData
+from app.repository.externalMaestroOwneredData import ExternalMaestroOwneredData
 
 
 @celery.task(name="clients.bussiness")
@@ -11,8 +11,10 @@ def task_clients_bussiness(owner_id, graph_id, systems):
     systems_id = list(map(lambda x: x.get('_id'), systems))
     query = {"_id": systems_id}
 
-    ExternalRequest = ExternalMaestroData(owner_id=owner_id, graph_id=graph_id)
-    result = ExternalRequest.get_request(path="systems", query=query)
+    result = ExternalMaestroOwneredData(graph_id, owner_id)\
+                    .list_request(path="systems", query=query)\
+                    .get_results('items')
+
     rClients = ReduceDict()
 
     for item in result:

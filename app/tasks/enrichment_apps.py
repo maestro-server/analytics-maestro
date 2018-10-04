@@ -3,8 +3,7 @@ from functools import reduce
 from app import celery
 from .draw_bussiness import task_draw_bussiness
 from app.libs.transformDict import append_servers, transform_dict
-from app.repository.externalMaestroData import ExternalMaestroData
-
+from app.repository.externalMaestroOwneredData import ExternalMaestroOwneredData
 
 
 @celery.task(name="enrichment.apps")
@@ -14,8 +13,9 @@ def task_enrichment(owner_id, graph_id, grid, index, edges):
     servers_id = list(set(servers_id)) #remove duplicate
     query = {"_id": servers_id}
 
-    ExternalRequest = ExternalMaestroData(owner_id=owner_id, graph_id=graph_id)
-    result = ExternalRequest.get_request(path="servers", query=query)
+    result = ExternalMaestroOwneredData(graph_id, owner_id)\
+                    .list_request(path="servers", query=query)\
+                    .get_results('items')
 
     servers = transform_dict(result)
     
