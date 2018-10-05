@@ -19,9 +19,8 @@ def task_send_to_front_app(owner_id, graph_id, payload):
         'Authorization': 'JWT %s' % access.decode("utf-8")
     }
 
-    result = ExternalMaestroAnalyticsFront(graph_id)\
-                    .set_headers(headers)\
-                    .post_request(path="graphs", body=payload)\
-                    .get_raw()
+    ExternalMaestroAnalyticsFront(graph_id)\
+        .set_headers(headers)\
+        .post_request(path="graphs", body=payload)
 
-    return {'result': result, 'graph_id': graph_id, 'owner_id': owner_id}
+    return {'graph_id': graph_id, 'owner_id': owner_id}

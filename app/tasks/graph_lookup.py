@@ -58,6 +58,7 @@ def task_graphlookup(owner_id, graph_id, entries, typed):
                     .list_aggregation(path="aggregate", entity=entity, pipeline=pipeline)\
                     .get_results('items')
 
-    network_id = types[typed].delay(owner_id, graph_id, items, entries)
+    if items:
+        network_id = types[typed].delay(owner_id, graph_id, items, entries)
 
     return {'qtd': len(items), 'graph_id': graph_id, 'owner_id': owner_id, 'network_id': str(network_id)}
