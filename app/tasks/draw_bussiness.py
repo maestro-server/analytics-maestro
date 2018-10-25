@@ -15,10 +15,10 @@ def task_draw_bussiness(owner_id, graph_id, grid, index, edges, servers):
     xml = Layout.save()
 
     payload = {
-        'payload': xml
+        'payload': xml,
+        'total': len(index)
     }
 
     send_app_id = task_send_to_front_app.delay(owner_id, graph_id, payload)
-
 
     return {'send_app_id': str(send_app_id), 'graph_id': graph_id, 'owner_id': owner_id}

@@ -7,11 +7,11 @@ from app.error.clientMaestroError import ClientMaestroError
 
 class Root(object):
 
-    def __init__(self, data, owner_id, crawler=Crawler):
+    def __init__(self, data, owner_id, graph_id, crawler=Crawler):
         if not isinstance(data, (list, tuple)) or len(data) <= 0:
-            err = ClientMaestroError("Dont exist any system (empty list)")
-            notify_error('Entry', owner_id, err, "warning")
-            raise err
+            err = "Dont exist any system (empty list)"
+            notify_error('Entry', owner_id, graph_id, err)
+            raise ClientMaestroError(err)
 
         self.__data = data
         self.__owner_id = owner_id

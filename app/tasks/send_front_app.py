@@ -4,6 +4,7 @@ from app import celery
 from app.libs.logger import logger
 from app.repository.externalMaestroAnalyticsFront import ExternalMaestroAnalyticsFront
 from .notification import task_notification
+from app.tasks.ws import task_ws
 
 @celery.task(name="send.server")
 def task_send_to_front_app(owner_id, graph_id, payload):
@@ -22,5 +23,7 @@ def task_send_to_front_app(owner_id, graph_id, payload):
     ExternalMaestroAnalyticsFront(graph_id)\
         .set_headers(headers)\
         .post_request(path="graphs", body=payload)
+
+    task_ws.delay(graph_id, owner_id)
 
     return {'graph_id': graph_id, 'owner_id': owner_id}

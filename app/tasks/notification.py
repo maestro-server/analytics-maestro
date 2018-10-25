@@ -4,7 +4,7 @@ from app import celery
 from app.repository.externalMaestro import ExternalMaestro
 
 @celery.task(name="notification.api")
-def task_notification(owner_id, graph_id, msg, status = None, more = None):
+def task_notification(owner_id, graph_id, msg=None, status=None, more={}):
 
     data = {'_id': graph_id}
 
@@ -12,7 +12,7 @@ def task_notification(owner_id, graph_id, msg, status = None, more = None):
         data['status'] = status
 
     if msg:
-        data['more'] = more
+        data['msg'] = msg
 
 
     merged = {**data, **more}
