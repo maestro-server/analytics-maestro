@@ -16,7 +16,7 @@ class HelperClearEmptyLines(object):
             empty = True
 
             for line in grid[row]:
-                m = grid[row][line][0]
+                m = grid[row][line][-1]
                 if (self._dmark != m):
                     empty = False
                     self.addSwf(row, grid[row])

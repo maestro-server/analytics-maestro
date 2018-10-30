@@ -6,7 +6,8 @@ class BasePattern(object):
 
         self._options = {
             'max_inter': 30,
-            'grow_mark': '-'
+            'grow_mark': '-',
+            'force_mark': 'f'
         }
 
     def _default_y(self):

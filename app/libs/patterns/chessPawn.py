@@ -5,5 +5,5 @@ class ChessPawnPattern(object):
         posy = self._default_y()
 
         if is_root and step > 0:
-            self._grid.create_dummy((self._step, posy))
+            self._grid.create_dummy((self._step, posy), self._options.get('force_mark'))
             self._step += 1
