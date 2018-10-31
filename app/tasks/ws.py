@@ -19,7 +19,7 @@ def task_ws(graph_id, owner_id, status='success'):
                     "type": status
                 },
                 "event": {
-                    "caller": "analytics-update"
+                    "caller": ["analytics-update", "analytics-{}".format(graph_id)]
                 }
             }
         }
