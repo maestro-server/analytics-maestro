@@ -6,7 +6,7 @@ from app.repository.externalMaestroWS import ExternalMaestroWS
 def task_ws(graph_id, owner_id, status='success'):
     title = "Finish Graph"
     msg = "(%s)" % (graph_id)
-    channel = "maestro#%s" % owner_id
+    channel = "maestro-%s" % owner_id
 
     body = {
         "method": "publish",
