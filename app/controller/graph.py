@@ -19,17 +19,9 @@ class GraphApp(Resource):
     @apiParam(Param) {String} type Graph type [Bussiness]
     @apiParam(Param) {String} _id Graph id, need to be create by server app
 
-    @apiPermission JWT (Read | Write | Admin)
-    @apiHeader (Auth) {String} Authorization JWT {Token}
-
-    @apiError (Error) PermissionError Token don`t have permission
-    @apiError (Error) Unauthorized Invalid Token
-    @apiError (Error) NotFound List is empty
-
     @apiSuccessExample {json} Success-Response:
             HTTP/1.1 201 OK
-             {
-             }
+            <entry task id)>
     """
     def post(self):
 
