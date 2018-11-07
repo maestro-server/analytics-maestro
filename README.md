@@ -18,6 +18,8 @@ To test out the demo, [Demo Online](http://demo.maestroserver.io "Demo Online")
 
 Draw archtectures maps using NetworkX Graph and SVG write.
 
+![arch](http://docs.maestroserver.io/en/latest/_images/analytics_internal.png)
+
 **Core API, organized by modules:**
 
 * Create grids
