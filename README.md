@@ -171,13 +171,13 @@ npm run docs
 | Env Variables                | Example                  | Description                        |
 |------------------------------|--------------------------|------------------------------------|
 | MAESTRO_PORT                 | 5020                     | API Port                           |
-| MAESTRO_DATA_URI             | http://localhost:5005    | Data Layer API URL                 |
+| MAESTRO_DATA_URI             | http://localhost:5010    | Data Layer API URL                 |
 | MAESTRO_ANALYTICS_FRONT_URI  | http://localhost:9999    | Analytics Front URL                | 
 | MAESTRO_SECRETJWT_ANALYTICS  | xxxx                     | Used with Analytics Front          |
 | MAESTRO_NOAUTH               | xxxx                     | Used for post auth Front           |
-| MAESTRO_GWORKERS             | 200                      | Prefetch used in translate worker  |
-| CELERY_BROKER_URL            | xxxx                     | Rabbitmq URL                       |
-| CELERYD_TASK_TIME_LIMIT      | 500                      | Timeout - worker                   |
+| MAESTRO_GWORKERS             | 2                        | Prefetch used in translate worker  |
+| CELERY_BROKER_URL            | amqp://rabbitmq:5672     | Rabbitmq URL                       |
+| CELERYD_TASK_TIME_LIMIT      | 10                       | Timeout - worker                   |
 
 
 ### Contribute ###
