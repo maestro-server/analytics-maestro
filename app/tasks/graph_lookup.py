@@ -29,12 +29,14 @@ def task_graphlookup(owner_id, graph_id, entries, typed):
         {
             '$project':
                 {
+                    '_id': 1,
                     'name': 1, 
                     'family': 1,
                     'environment': 1,
                     'cluster': 1,
                     'language': 1,
                     'servers': 1,
+                    'system': 1,
                     'datacenters': 1,
                     'size': 1,
                     'deps._id': 1, 
