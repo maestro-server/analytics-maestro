@@ -132,9 +132,9 @@ class DrawTemplateSVG(object):
     def save(self):
         return self.dwg.tostring()
 
-    def draw_connect(self, node1, node2, details={}):
+    def draw_connect(self, node1, node2, details=None):
         id = "%s-%s" % (node1[0], node2[0])
-        g = self._symbols.create_group(id)
+        g = self.dwg.g(id=id)
 
         d = HelperDrawConnector(self._size, self._off, self._matrix3d).connect(node1, node2)
 
