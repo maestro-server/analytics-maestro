@@ -1,3 +1,7 @@
+
+import collections
+
+
 class HelperClearEmptyLines(object):
 
     def __init__(self):
@@ -9,9 +13,13 @@ class HelperClearEmptyLines(object):
     def run(self, grid, index):
         self._swfindex = index
         self.cleanning(grid)
+
         return self._swfgrid, self._swfindex
 
     def cleanning(self, grid):
+
+        grid = collections.OrderedDict(sorted(grid.items()))
+
         for row in grid:
             empty = True
 

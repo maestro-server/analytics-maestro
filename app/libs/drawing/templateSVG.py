@@ -18,24 +18,39 @@ class DrawTemplateSVG(object):
         self._size = (size, size * 1.9)
 
         self._matrix3d = m3d(tmax[0], self._size, self._off, grid)
-
         self._area = darea(self._off, self._size, tmax[0], tmax[1], grid).area()
-
         self.dwg = Drawing('graph.svg', size=self._area, id="graph")
-        self.dwg.viewbox(0, 0, *self._area)
+
+        viewp = self.fixOneLineRoot(grid)
+        self.dwg.viewbox(*viewp)
+
         self._symbols = symbols(self.dwg)
         self._servers = servers
 
         self.setup()
 
+    def fixOneLineRoot(self, grid):
+
+        rootSize = len(grid[0])
+        size = len(grid)
+
+        area = [0, 0, *self._area]
+
+        if rootSize <= 2:
+            ajy = self._size[0] * 1.8
+            ajx = self._size[0] * 0.5
+
+            area[1] = 0 - ajx
+            area[3] = self._area[1] + ajy
+
+            if size <= 1:
+                area[0] = 0 - ajx
+
+        return area
+
     def setup(self):
-        self.setup_background()
         self.setup_brightness()
         self.setup_marker()
-
-    def setup_background(self):
-        symbol = self._symbols.square((0, 0), size=self._area, opts={'fill': "#fbfbfb"})
-        self.add(symbol)
 
     def setup_brightness(self):
         self._symbols.brightness()

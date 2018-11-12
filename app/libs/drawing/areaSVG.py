@@ -13,7 +13,7 @@ class DrawArea(object):
         self._mrotation = mrotation(self._max_x, size, off)
 
     def area_x(self):
-        menus = self.shw_empty() - 1
+        menus = self.shw_empty()
 
         cal = self._mrotation.cal_offx(self._max_x, self._max_y) + self._size[0]
         return cal - (menus * self._size[0])
