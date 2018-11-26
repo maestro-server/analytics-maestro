@@ -4,21 +4,21 @@ from app.libs.dcServer import DcServers
 
 
 class HelperDrawTooltips(HelperDraw):
-    def __init__(self, size, off, servers, dcServers=DcServers):
+    def __init__(self, size, off, dcServers=DcServers):
         self._text = []
         self._pos = None
         self._app = None
         self._off = off
 
         self._font_size = 12
-        self._dcServers = dcServers(servers)
+        self._dcServers = dcServers()
         super().__init__(size)
 
     def execute(self, app):
         self._app = app
 
         servers = self._app.get('servers', [])
-        dc = self._dcServers.byServer(self._app, servers)
+        dc = self._dcServers.findDC(self._app)
 
         props = {k: self._app.get(k, None) for k in ('name', 'provider', 'family', 'environment', 'language', 'cluster')}
 

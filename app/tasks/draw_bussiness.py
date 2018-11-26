@@ -6,9 +6,9 @@ from .send_front_app import task_send_to_front_app
 
 
 @celery.task(name="draw.bussiness")
-def task_draw_bussiness(owner_id, graph_id, grid, index, edges, servers):
+def task_draw_bussiness(owner_id, graph_id, grid, index, edges):
 
-    Layout = DrawLayout(grid, index, servers)
+    Layout = DrawLayout(grid, index)
 
     Layout.draw_connections(edges)
     Layout.draw_nodes()

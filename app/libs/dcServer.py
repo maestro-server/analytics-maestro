@@ -4,14 +4,20 @@ from app.libs.dcApp import DcApps
 
 class DcServers(object):
 
-    def __init__(self, servers=[]):
-        self._servers = servers
+    def __init__(self):
         self.allowed = ['aws', 'openstack', 'azure']
 
-    def byServer(self, app, servers=[], dft='premise'):
+    def findDC(self, app, dft='premise'):
+        servers = app.get('servers', [])
+        dc = []
 
         if len(servers) > 0:
-            return self.findDC(servers)
+            for server in servers:
+                itns = DcApps.byServer(server).capitalize()
+                dc.append(itns)
+
+            dc = set(dc)
+            return ', '.join(dc)
 
         if 'datacenters' in app:
             dc = app.get('datacenters')
@@ -25,14 +31,4 @@ class DcServers(object):
         return dft
 
 
-    def findDC(self, servers):
-        dc = []
-
-        for svs in servers:
-            ss = self._servers.get(svs)
-            itns = DcApps.byServer(ss).capitalize()
-            dc.append(itns)
-
-        dc = set(dc)
-        return ', '.join(dc)
 
