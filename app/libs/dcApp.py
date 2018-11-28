@@ -18,11 +18,11 @@ class DcApps(object):
         return dft
 
     @staticmethod
-    def byApps(node, lservers):
+    def byApps(node):
         obj = node
         servers = node.get('servers', [])
 
         if len(servers) > 0:
-            obj = lservers.get(servers[0])
+            obj = servers[0]
 
         return DcApps.byServer(obj)

@@ -12,7 +12,7 @@ from app.libs.template.symbolAssets import SymbolAssets
 
 
 class DrawTemplateSVG(object):
-    def __init__(self, tmax, servers, grid, darea=DrawArea, symbols=SymbolAssets, m3d=Matrix3D):
+    def __init__(self, tmax, grid, darea=DrawArea, symbols=SymbolAssets, m3d=Matrix3D):
         self._off = (2.2, 2.5)
         size = 100
         self._size = (size, size * 1.9)
@@ -25,7 +25,6 @@ class DrawTemplateSVG(object):
         self.dwg.viewbox(*viewp)
 
         self._symbols = symbols(self.dwg)
-        self._servers = servers
 
         self.setup()
 
@@ -96,7 +95,7 @@ class DrawTemplateSVG(object):
         self.draw_tooltips(node)
 
     def draw_execute(self, pos, node):
-        hDrawApp = HelperDrawApplication(self._size, self._servers)
+        hDrawApp = HelperDrawApplication(self._size)
         hDrawApp.execute(pos, node)
 
         pSymb = hDrawApp.get_apps()
@@ -109,7 +108,7 @@ class DrawTemplateSVG(object):
         _id = "tool-" + node.get('_id')
         g = self._symbols.create_group(_id)
 
-        hDrawTooltips = HelperDrawTooltips(self._size, self._off, self._servers)
+        hDrawTooltips = HelperDrawTooltips(self._size, self._off)
         hDrawTooltips.execute(node)
 
         ltxt = hDrawTooltips.get_text()

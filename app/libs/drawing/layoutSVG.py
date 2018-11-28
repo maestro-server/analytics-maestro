@@ -3,7 +3,7 @@ from .templateSVG import DrawTemplateSVG
 
 
 class DrawLayout(object):
-    def __init__(self, grid, index, servers={}, draw=DrawTemplateSVG):
+    def __init__(self, grid, index, draw=DrawTemplateSVG):
 
         self._grid = self.parser_json_grid(grid)
         self._index = index
@@ -12,7 +12,7 @@ class DrawLayout(object):
 
         self._max_x = max(self._grid, key=int)
         self._max_y = max(self._grid[firstcol], key=int)
-        self.setup_drawer(draw, servers)
+        self.setup_drawer(draw)
 
     def parser_json_grid(self, grid):
         output_dict = {}
@@ -27,9 +27,9 @@ class DrawLayout(object):
         return output_dict
 
 
-    def setup_drawer(self, draw, servers):
+    def setup_drawer(self, draw):
         tmax = (self._max_x, self._max_y)
-        self.drawer = draw(tmax, servers, self._grid)
+        self.drawer = draw(tmax, self._grid)
 
     def draw_nodes(self):
         for _, node in self._index.items():

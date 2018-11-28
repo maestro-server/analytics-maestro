@@ -6,12 +6,11 @@ from app.libs.score.scoreServer import ScoreServer
 from app.libs.matrix_rotation.calGrid.factoryCalGrid import FactoryCalGrid
 
 class HelperDrawApplication(HelperDraw):
-    def __init__(self, size, servers, microCal=MicroCalSingle):
+    def __init__(self, size, microCal=MicroCalSingle):
 
         self._microsingle = microCal()
 
         self._apps = []
-        self._servers = servers
         self._calGrid = None
         self._pos = None
         self._nsize = None
@@ -38,7 +37,8 @@ class HelperDrawApplication(HelperDraw):
 
         family = self.slug(family)
         asset = '%s.%s' % (family, catsize)
-        template = DcApps.byApps(node, self._servers)
+
+        template = DcApps.byApps(node)
 
         self._calGrid = FactoryCalGrid.zero(self._size)
         self.cal_ajust()
@@ -89,23 +89,18 @@ class HelperDrawApplication(HelperDraw):
 
         prepared = []
 
-        for id_server in servers:
-            details = self._servers.get(id_server)
+        for server in servers:
 
-            if details:
-                cpu = details.get('cpu', 1)
-                memory = details.get('memory', 1)
+            if isinstance(server, dict):
+                cpu = server.get('cpu', 1)
+                memory = server.get('memory', 1)
                 score = ScoreServer.make_score(cpu, memory)
 
-                ss = {k: details.get(k, None) for k in (
-                    'hostname', 'ipv4_private', 'ipv4_public', 'datacenters', 'services', 'storage', 'cpu', 'memory',
-                    'environment', 'role', 'os')}
-
                 family = self.slug(family)
-                ss['asset'] = '%s.%s' % (family, ScoreServer.val_score(score))
-                ss['score'] = score
+                server['asset'] = '%s.%s' % (family, ScoreServer.val_score(score))
+                server['score'] = score
 
-                prepared.append(ss)
+                prepared.append(server)
 
         prepared = sorted(prepared, key=itemgetter('score'), reverse=True)
         return prepared
