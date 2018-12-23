@@ -1,6 +1,8 @@
 
 from app.libs.logger import logger
 from flask_restful import Resource
+
+from app.services.privateAuth import private_auth
 from app.validate.validate import Validate
 
 from app.tasks.graph_lookup import task_graphlookup
@@ -19,10 +21,18 @@ class GraphApp(Resource):
     @apiParam(Param) {String} type Graph type [Bussiness]
     @apiParam(Param) {String} _id Graph id, need to be create by server app
 
+    @apiPermission JWT Private (MAESTRO_SECRETJWT_PRIVATE)
+    @apiHeader (Header) {String} Authorization JWT {Token}
+
+    @apiError (Error) PermissionError Token don`t have permission
+    @apiError (Error) Unauthorized Invalid Token
+
     @apiSuccessExample {json} Success-Response:
             HTTP/1.1 201 OK
             <entry task id)>
     """
+
+    @private_auth
     def post(self):
 
         valid = Validate().validate()

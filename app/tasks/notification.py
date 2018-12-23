@@ -2,6 +2,7 @@
 from app.views import app
 from app import celery
 from app.repository.externalMaestro import ExternalMaestro
+from app.services.privateAuth.decorators.external_private_token import create_jwt
 
 @celery.task(name="notification.api")
 def task_notification(owner_id, graph_id, msg=None, status=None, more={}):
@@ -18,7 +19,8 @@ def task_notification(owner_id, graph_id, msg=None, status=None, more={}):
     merged = {**data, **more}
 
     base = app.config['MAESTRO_DATA_URI']
-    ExternalMaestro(base)\
-                 .put_request(path="graphs", body={'body': [merged]})
+    ExternalMaestro(base) \
+        .set_headers(create_jwt()) \
+        .put_request(path="graphs", body={'body': [merged]})
 
     return {'owner_id': owner_id}

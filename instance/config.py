@@ -16,7 +16,7 @@ class Config(object):
     RESTFUL_JSON = {'cls': DateTimeEncoder}
 
     WS_SECRET = os.environ.get("MAESTRO_WEBSOCKET_SECRET", "wsSecretKey")
-    SECRETJWT = os.environ.get("MAESTRO_SECRETJWT_ANALYTICS", "defaultSecretKey")
+    SECRETJWT_PRIVATE = os.environ.get("MAESTRO_SECRETJWT_PRIVATE", "defaultSecretKeyPrivate")
     NOAUTH = os.environ.get("MAESTRO_NOAUTH", "defaultSecretNoAuthToken")
 
     MAESTRO_DATA_URI = os.environ.get("MAESTRO_DATA_URI", "http://localhost:5010")
@@ -25,6 +25,5 @@ class Config(object):
 
     CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", 'amqp://localhost')
     CELERY_DEFAULT_QUEUE = 'analytics'
-
     CELERYD_TASK_TIME_LIMIT = os.environ.get("CELERYD_TASK_TIME_LIMIT", 60)
     CELERYD_TASK_SOFT_TIME_LIMIT = os.environ.get("CELERYD_TASK_SOFT_TIME_LIMIT", 60)

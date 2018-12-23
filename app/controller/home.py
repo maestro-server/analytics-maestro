@@ -1,7 +1,6 @@
-import os
-import json
-from app import app
+
 from flask_restful import Resource
+from app.libs.appInfo import appInfo
 
 
 class HomeApp(Resource):
@@ -19,11 +18,4 @@ class HomeApp(Resource):
     }
     """
     def get(self):
-        root_path = os.path.join(app.root_path, '..')
-
-        file = open(root_path + '/package.json')
-        json_data = file.read()
-        data = json.loads(json_data)
-
-        keys = ['name', 'description', 'version', 'license']
-        return dict(zip(keys, [data[k] for k in keys]))
+        return appInfo()

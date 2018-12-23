@@ -13,4 +13,4 @@ class Jwt(object):
 
     @staticmethod
     def encode(encoded):
-        return jwt.encode(encoded, app.config['SECRETJWT'], algorithm='HS256')
+        return jwt.encode(encoded, app.config['SECRETJWT_PRIVATE'], algorithm='HS256')

@@ -27,5 +27,5 @@ class MaestroRequest(object):
         if self.get_status() is 200:
             return self.__context.json()
 
-        if self.get_status() in [500, 503, 504, 0]:
+        if self.get_status() in [500, 503, 504, 401, 403, 0]:
             raise ClientMaestroError(self.__context.text)
