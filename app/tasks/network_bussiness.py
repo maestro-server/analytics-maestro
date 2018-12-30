@@ -19,7 +19,7 @@ def task_network_bussiness(owner_id, graph_id, data, entries):
         Orchestration.create(entries)
 
     except Exception as error:
-        task_notification.delay(graph_id=graph_id, owner_id=owner_id, msg=str(error), status='error')
+        task_notification.delay(graph_id=graph_id, msg=str(error), status='error')
         task_ws.delay(graph_id, owner_id, "danger")
         raise error
 

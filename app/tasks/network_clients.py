@@ -29,6 +29,6 @@ def task_clients_bussiness(owner_id, graph_id, systems):
         }
     }
 
-    not_id = task_notification.delay(graph_id=graph_id, owner_id=owner_id, msg=None, more=data)
+    not_id = task_notification.delay(graph_id=graph_id, msg=None, more=data)
 
     return {'not_id': str(not_id), 'graph_id': graph_id, 'owner_id': owner_id}

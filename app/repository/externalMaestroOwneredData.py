@@ -34,7 +34,7 @@ class ExternalMaestroOwneredData(ExternalMaestro):
 
     def error_handling(self, task, msg):
 
-        if self.ent_id :
-            return notify_error(task=task, msg=msg, conn_id=self.ent_id)
+        if self.ent_id:
+            return notify_error(task=task, msg=msg, graph_id=self.ent_id)
 
         logger.error("MaestroData:  [%s] - %s", task, msg)

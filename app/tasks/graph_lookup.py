@@ -66,7 +66,7 @@ def task_graphlookup(owner_id, graph_id, entries, typed):
         return {'qtd': len(items), 'graph_id': graph_id, 'owner_id': owner_id, 'network_id': str(network_id)}
 
     else:
-        task_notification.delay(graph_id=graph_id, owner_id=owner_id, msg="Empty dependencies", status="warning")
+        task_notification.delay(graph_id=graph_id, msg="Empty dependencies", status="warning")
         task_ws.delay(graph_id, owner_id, "warning")
         return {'qtd': len(items)}
 

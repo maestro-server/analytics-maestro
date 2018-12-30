@@ -55,7 +55,7 @@ class GraphApp(Resource):
                 return str(entry_id), 201
 
             except Exception as error:
-                task_notification.delay(graph_id=graph_id, owner_id=owner_id, msg=str(error), status='error')
+                task_notification.delay(graph_id=graph_id, msg=str(error), status='error')
                 logger.error(error)
                 return {'message': str(error)}, 501
 

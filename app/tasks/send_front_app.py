@@ -14,16 +14,15 @@ def task_send_to_front_app(owner_id, graph_id, payload):
         access = Jwt.encode(token)
     except Exception as error:
         logger.error(error)
-        task_notification.delay(graph_id=graph_id, owner_id=owner_id, msg=str(error), status="danger")
+        task_notification.delay(graph_id=graph_id, msg=str(error), status="danger")
 
     headers = {
         'Authorization': 'JWT %s' % access.decode("utf-8")
     }
 
-    ExternalMaestroAnalyticsFront(graph_id)\
-        .set_headers(headers)\
+    ExternalMaestroAnalyticsFront(graph_id) \
+        .set_headers(headers) \
         .post_request(path="graphs", body=payload)
 
     task_ws.delay(graph_id, owner_id)
-
     return {'graph_id': graph_id, 'owner_id': owner_id}

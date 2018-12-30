@@ -1,6 +1,5 @@
 
 from .crawler import Crawler
-from app.libs.logger import logger
 from app.repository.libs.notifyError import notify_error
 from app.error.clientMaestroError import ClientMaestroError
 
@@ -10,7 +9,7 @@ class Root(object):
     def __init__(self, data, owner_id, graph_id, crawler=Crawler):
         if not isinstance(data, (list, tuple)) or len(data) <= 0:
             err = "Dont exist any system (empty list)"
-            notify_error('Entry', owner_id, graph_id, err)
+            notify_error('Entry', graph_id, err)
             raise ClientMaestroError(err)
 
         self.__data = data

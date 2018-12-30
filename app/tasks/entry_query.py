@@ -26,6 +26,6 @@ def task_entry(owner_id, graph_id, typed, filters={}):
         return {'qtd': qtdl, 'graph_id': graph_id, 'owner_id': owner_id, 'lookup_id': lookup_id}
 
     else:
-        task_notification.delay(graph_id=graph_id, owner_id=owner_id, msg="Empty entry point", status="warning")
+        task_notification.delay(graph_id=graph_id, msg="Empty entry point", status="warning")
         task_ws.delay(graph_id, owner_id, "warning")
         return {'qtd': qtdl}

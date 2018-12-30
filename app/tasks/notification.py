@@ -5,7 +5,7 @@ from app.repository.externalMaestro import ExternalMaestro
 from app.services.privateAuth.decorators.external_private_token import create_jwt
 
 @celery.task(name="notification.api")
-def task_notification(owner_id, graph_id, msg=None, status=None, more={}):
+def task_notification(graph_id, msg=None, status=None, more={}):
 
     data = {'_id': graph_id}
 
@@ -23,4 +23,4 @@ def task_notification(owner_id, graph_id, msg=None, status=None, more={}):
         .set_headers(create_jwt()) \
         .put_request(path="graphs", body={'body': [merged]})
 
-    return {'owner_id': owner_id}
+    return {'graph_id': graph_id}
