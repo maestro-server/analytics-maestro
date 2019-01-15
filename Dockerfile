@@ -4,7 +4,7 @@ MAINTAINER Felipe Signorini <felipe.signorini@maestroserver.io>
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-RUN apk add --no-cache --virtual pkgconfig graphviz-dev
+RUN apk add --no-cache --virtual .build-dependencies pkgconfig graphviz-dev
 RUN addgroup app && adduser -S app
 
 ENV APP_PATH=/opt/application
