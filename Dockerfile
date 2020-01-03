@@ -20,6 +20,7 @@ COPY run.py $APP_PATH/run.py
 COPY gunicorn_config.py /opt/gunicorn_config.py
 
 RUN pip3 install --upgrade pip gunicorn
+RUN pip3 install cython
 RUN pip3 install -r requirements.txt
 
 RUN apk del --no-cache --purge .build-deps \
