@@ -5,6 +5,7 @@ RUN apk add --no-cache --virtual .build-dependencies pkgconfig graphviz-dev && \
     RUN rm -rf /var/cache/apk/*
 
 ENV APP_PATH=/opt/application
+ENV MPLLOCALFREETYPE=1 # FreeType version 2.3 or higher is required. You may set the MPLLOCALFREETYPE environment variable to 1 to let Matplotlib download it
 WORKDIR $APP_PATH
 
 COPY docker-entrypoint-workers.sh /usr/local/bin/
