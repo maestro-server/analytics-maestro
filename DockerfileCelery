@@ -1,25 +1,25 @@
 FROM maestroserver/maestro-python-gcc
 
 RUN apk add --no-cache --virtual .build-dependencies pkgconfig graphviz-dev && \
-    apk del --no-cache --purge .build-dependencies \
-    RUN rm -rf /var/cache/apk/*
+    apk del --no-cache --purge .build-dependencies && \
+    rm -rf /var/cache/apk/*
 
 ENV APP_PATH=/opt/application
-ENV MPLLOCALFREETYPE=1 # FreeType version 2.3 or higher is required. You may set the MPLLOCALFREETYPE environment variable to 1 to let Matplotlib download it
+ENV PYCURL_SSL_LIBRARY=openssl
+
 WORKDIR $APP_PATH
 
-COPY docker-entrypoint-workers.sh /usr/local/bin/
 COPY ./app app/
-COPY ./assets assets/
 COPY ./instance instance/
 COPY requirements.txt requirements.txt
 COPY package.json package.json
 COPY run.py run.py
+COPY docker-entrypoint-workers.sh /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/docker-entrypoint-workers.sh
-RUN addgroup -S app && adduser -S app -G app
-RUN pip3 install --upgrade pip cython
-RUN pip3 install -r requirements.txt
+RUN addgroup app && adduser -S app
+RUN pip3 install --upgrade pip cython && \
+    pip3 install -r requirements.txt
 
 ENTRYPOINT ["/sbin/tini","-g","--"]
 CMD ["docker-entrypoint-workers.sh"]
