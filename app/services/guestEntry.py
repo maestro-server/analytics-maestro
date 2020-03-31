@@ -30,7 +30,7 @@ class GuestEntry(object):
         return self._items
     
     def multiple(self, n):
-        if n % self.max is 0:
+        if n % self.max == 0:
             return n
 
         return n + (self.max - n % self.max)
