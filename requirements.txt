@@ -7,7 +7,7 @@ jupyter-client==6.1.2
 jupyter-console==6.1.0
 jwt==1.0.0
 matplotlib==3.2.1
-networkx==2.1
+networkx==2.4
 numpy==1.18.2
 pycurl==7.43.0.5
 pygraphviz==1.5
