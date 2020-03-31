@@ -1,13 +1,7 @@
-FROM python:3.8-slim AS compile
+FROM maestroserver/maestro-python-gcc AS compile-graviz
 
 RUN apt-get -y update && \
 	apt-get -y install --no-install-recommends \
-	curl \
-	gcc \
-	openssl \
-    build-essential \
-	libcurl4-openssl-dev \
-	libssl-dev \
 	pkg-config \
 	graphviz-dev \
 	&& rm -rf /var/lib/apt/lists/*
@@ -19,7 +13,7 @@ RUN python3 -m venv /home/app/venv
 ENV PATH="/home/app/venv/bin:$PATH"
 
 COPY requirements.txt requirements.txt
-RUN pip install --upgrade pip gunicorn && \
+RUN pip3 install --upgrade pip gunicorn && \
     pip3 install --no-cache-dir -r requirements.txt
 
 
@@ -27,7 +21,7 @@ RUN pip install --upgrade pip gunicorn && \
 FROM python:3.8-slim
 RUN useradd --create-home app
 
-COPY --from=compile /home/app/venv /home/app/venv
+COPY --from=compile-graviz /home/app/venv /home/app/venv
 
 ENV PATH="/home/app/venv/bin:$PATH"
 
