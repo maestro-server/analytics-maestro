@@ -139,3 +139,4 @@ etc/
 *.sln
 pyvenv.cfg
 .gitattributes
+Dockerfile*

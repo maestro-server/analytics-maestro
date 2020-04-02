@@ -19,20 +19,14 @@ RUN pip3 install --upgrade pip gunicorn && \
 
 # production image
 FROM python:3.8-slim
-RUN useradd --create-home app
-
 COPY --from=compile-graviz /home/app/venv /home/app/venv
 
 ENV PATH="/home/app/venv/bin:$PATH"
 
+RUN useradd --create-home app
 WORKDIR /home/app
 USER app
 
-COPY ./app app/
-COPY ./instance instance/
-COPY ./assets assets/
-COPY package.json package.json
-COPY run.py run.py
-COPY gunicorn_config.py gunicorn_config.py
+COPY ./ ./
 
 CMD ["gunicorn", "--config", "./gunicorn_config.py", "run:app"]
