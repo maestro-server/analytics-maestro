@@ -10,7 +10,7 @@ from app.tasks.ws import task_ws
 @celery.task(name="entry.api")
 def task_entry(owner_id, graph_id, typed, filters={}):
 
-    ItnMaestroData =  ExternalMaestroOwneredData(graph_id, owner_id)
+    ItnMaestroData = ExternalMaestroOwneredData(graph_id, owner_id)
     items = ItnMaestroData\
             .list_request(path="systems", query=filters)\
             .get_results('items')
