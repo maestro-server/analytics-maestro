@@ -28,14 +28,15 @@ class DrawTemplateSVG(object):
 
         self.setup()
 
+    # When you have only one or two items, we need  to fix the grid area
     def fixOneLineRoot(self, grid):
-
-        rootSize = len(grid[0])
+        key_min = min(grid.keys())
+        rootSize = len(grid[key_min])
         size = len(grid)
 
         area = [0, 0, *self._area]
 
-        if rootSize <= 2:
+        if key_min <= 1 and rootSize <= 2:
             ajy = self._size[0] * 1.8
             ajx = self._size[0] * 0.5
 
