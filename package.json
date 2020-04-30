@@ -1,6 +1,6 @@
 {
   "name": "analytics-maestro",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Maestro - Draw archectures and create maps",
   "main": "run.py",
   "scripts": {
