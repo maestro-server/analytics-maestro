@@ -16,11 +16,14 @@ To test out the demo, [Demo Online](http://demo.maestroserver.io "Demo Online")
 
 # Maestro Server - Analytics API #
 
-Draw archtectures maps using NetworkX Graph and SVG write.
+Accountant to get and create a application dependency tree and build diagrams:
+
+* Create business graphs
+* Drawing diagrams
 
 ![arch](http://docs.maestroserver.io/en/latest/_images/analytics_internal.png)
 
-**Core API, organized by modules:**
+**Core API:**
 
 * Create grids
 * Create bussiness graph
