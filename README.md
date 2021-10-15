@@ -1,5 +1,5 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b9ed3c8e272546ceae2f8a98d13ee0f3)](https://www.codacy.com/app/maestro/analytics-maestro?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=maestro-server/analytics-maestro&amp;utm_campaign=Badge_Grade)
-[![Build Status](https://travis-ci.org/maestro-server/analytics-maestro.svg?branch=master)](https://travis-ci.org/maestro-server/analytics-maestro)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/efeb23a109bd49bf8cd804b81b4a63a8)](https://www.codacy.com/gh/maestro-server/analytics-maestro/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=maestro-server/analytics-maestro&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.com/maestro-server/analytics-maestro.svg?branch=master)](https://travis-ci.org/maestro-server/analytics-maestro)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c2272dfe465bdaea4900/maintainability)](https://codeclimate.com/github/maestro-server/analytics-maestro/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c2272dfe465bdaea4900/test_coverage)](https://codeclimate.com/github/maestro-server/analytics-maestro/test_coverage)
 
