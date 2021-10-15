@@ -1,8 +1,8 @@
 FROM maestroserver/maestro-python-gcc AS compile-graviz
 
-RUN apt-get -y update && \
+RUN apt-get -y update --allow-releaseinfo-change && \
 	apt-get -y install --no-install-recommends \
-	pkg-config \
+  pkg-config \
 	graphviz-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
