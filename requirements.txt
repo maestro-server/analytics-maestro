@@ -10,7 +10,7 @@ networkx==2.4
 numpy==1.18.2
 pycurl==7.43.0.5
 pygraphviz==1.6
-PyJWT==1.7.1
+PyJWT==2.4.0
 python-dotenv==0.12.0
 simplegeneric==0.8.1
 svgwrite==1.1.12
